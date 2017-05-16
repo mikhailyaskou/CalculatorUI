@@ -19,9 +19,16 @@
 NSString *const zeroCharacher = @"0";
 NSString *const dotCharachter = @".";
 
+
+- (void)dealloc {
+    [_resultLabel release];
+    [super dealloc];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteLastDigit)];
+    UISwipeGestureRecognizer *swipe = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteLastDigit)]autorelease];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [self.resultLabel addGestureRecognizer:swipe];
 }
@@ -59,8 +66,4 @@ NSString *const dotCharachter = @".";
 }
 
 
-- (void)dealloc {
-    [_resultLabel release];
-    [super dealloc];
-}
 @end
