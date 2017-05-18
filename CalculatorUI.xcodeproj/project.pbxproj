@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		986CE5461ECD9AE5002A4386 /* AboutUS.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CE5441ECD9AE5002A4386 /* AboutUS.m */; };
+		986CE5471ECD9AE5002A4386 /* AboutUS.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986CE5451ECD9AE5002A4386 /* AboutUS.xib */; };
+		986CE54C1ECD9D64002A4386 /* License.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CE54A1ECD9D64002A4386 /* License.m */; };
+		986CE54D1ECD9D64002A4386 /* License.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986CE54B1ECD9D64002A4386 /* License.xib */; };
 		98BB18121EC4E6A200641973 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB18111EC4E6A200641973 /* main.m */; };
 		98BB18151EC4E6A200641973 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB18141EC4E6A200641973 /* AppDelegate.m */; };
 		98BB18181EC4E6A200641973 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BB18171EC4E6A200641973 /* ViewController.m */; };
@@ -16,6 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		986CE5431ECD9AE5002A4386 /* AboutUS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUS.h; sourceTree = "<group>"; };
+		986CE5441ECD9AE5002A4386 /* AboutUS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUS.m; sourceTree = "<group>"; };
+		986CE5451ECD9AE5002A4386 /* AboutUS.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUS.xib; sourceTree = "<group>"; };
+		986CE5491ECD9D64002A4386 /* License.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = License.h; sourceTree = "<group>"; };
+		986CE54A1ECD9D64002A4386 /* License.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = License.m; sourceTree = "<group>"; };
+		986CE54B1ECD9D64002A4386 /* License.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = License.xib; sourceTree = "<group>"; };
 		98BB180D1EC4E6A200641973 /* CalculatorUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculatorUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98BB18111EC4E6A200641973 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		98BB18131EC4E6A200641973 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +49,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		986CE5481ECD9CF6002A4386 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				986CE5431ECD9AE5002A4386 /* AboutUS.h */,
+				986CE5441ECD9AE5002A4386 /* AboutUS.m */,
+				986CE5451ECD9AE5002A4386 /* AboutUS.xib */,
+				986CE5491ECD9D64002A4386 /* License.h */,
+				986CE54A1ECD9D64002A4386 /* License.m */,
+				986CE54B1ECD9D64002A4386 /* License.xib */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		98BB18041EC4E6A200641973 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +90,7 @@
 				98BB181E1EC4E6A200641973 /* LaunchScreen.storyboard */,
 				98BB18211EC4E6A300641973 /* Info.plist */,
 				98BB18101EC4E6A200641973 /* Supporting Files */,
+				986CE5481ECD9CF6002A4386 /* About */,
 			);
 			path = CalculatorUI;
 			sourceTree = "<group>";
@@ -140,6 +164,8 @@
 				98BB18201EC4E6A200641973 /* LaunchScreen.storyboard in Resources */,
 				98BB181D1EC4E6A200641973 /* Assets.xcassets in Resources */,
 				98BB181B1EC4E6A200641973 /* Main.storyboard in Resources */,
+				986CE54D1ECD9D64002A4386 /* License.xib in Resources */,
+				986CE5471ECD9AE5002A4386 /* AboutUS.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +178,9 @@
 			files = (
 				98BB18181EC4E6A200641973 /* ViewController.m in Sources */,
 				98BB18151EC4E6A200641973 /* AppDelegate.m in Sources */,
+				986CE54C1ECD9D64002A4386 /* License.m in Sources */,
 				98BB18121EC4E6A200641973 /* main.m in Sources */,
+				986CE5461ECD9AE5002A4386 /* AboutUS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

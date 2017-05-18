@@ -7,20 +7,25 @@
 //
 
 #import "ViewController.h"
+#import "AboutUS.h"
 
 @interface ViewController ()
 
+@property (retain, nonatomic) AboutUS *aboutView;
 @property (retain, nonatomic) IBOutlet UILabel *resultLabel;
+
 
 @end
 
 @implementation ViewController
+
 
 NSString *const zeroCharacher = @"0";
 NSString *const dotCharachter = @".";
 
 
 - (void)dealloc {
+    [_aboutView release];
     [_resultLabel release];
     [super dealloc];
 }
@@ -43,6 +48,7 @@ NSString *const dotCharachter = @".";
     self.resultLabel.text = (self.resultLabel.text.length > 1) ? [self.resultLabel.text substringToIndex: self.resultLabel.text.length -1] : zeroCharacher;
 }
 
+
 - (IBAction)dotTaped:(id)sender {
     
     NSRange range = [self.resultLabel.text rangeOfString:dotCharachter];
@@ -52,9 +58,12 @@ NSString *const dotCharachter = @".";
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (IBAction)aboutTaped:(id)sender {
+    
+    self.aboutView = [[[AboutUS alloc] init] autorelease];
+    [self.navigationController pushViewController:self.aboutView animated: YES];
 }
+
 
 - (IBAction)digitTaped:(UIButton *)sender {
     
