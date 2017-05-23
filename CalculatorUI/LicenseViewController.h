@@ -1,5 +1,5 @@
 //
-//  AboutUS.h
+//  License.h
 //  CalculatorUI
 //
 //  Created by Mikhail Yaskou on 18.05.17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutUS : UIViewController
+@interface LicenseViewController : UIViewController
 
 @end

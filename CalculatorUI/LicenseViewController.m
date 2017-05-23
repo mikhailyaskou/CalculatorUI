@@ -6,13 +6,14 @@
 //  Copyright © 2017 Mikhail Yaskou. All rights reserved.
 //
 
-#import "License.h"
+#import "LicenseViewController.h"
 
-@interface License ()
+@interface LicenseViewController ()
 
 @end
 
-@implementation License
+@implementation LicenseViewController
+
 
 - (IBAction)hideLicenceTaped:(id)sender {
     

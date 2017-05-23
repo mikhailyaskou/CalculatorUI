@@ -7,13 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "AboutUS.h"
+#import "AboutUsViewController.h"
 
 @interface ViewController ()
 
-@property (retain, nonatomic) AboutUS *aboutView;
 @property (retain, nonatomic) IBOutlet UILabel *resultLabel;
-
 
 @end
 
@@ -25,13 +23,14 @@ NSString *const dotCharachter = @".";
 
 
 - (void)dealloc {
-    [_aboutView release];
+    
     [_resultLabel release];
     [super dealloc];
 }
 
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     UISwipeGestureRecognizer *swipe = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteLastDigit)]autorelease];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -39,6 +38,7 @@ NSString *const dotCharachter = @".";
 }
 
 - (IBAction)clearTaped:(id)sender {
+    
     self.resultLabel.text = zeroCharacher;
 }
 
@@ -60,8 +60,7 @@ NSString *const dotCharachter = @".";
 
 - (IBAction)aboutTaped:(id)sender {
     
-    self.aboutView = [[[AboutUS alloc] init] autorelease];
-    [self.navigationController pushViewController:self.aboutView animated: YES];
+    [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
 }
 
 
