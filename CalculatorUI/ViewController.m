@@ -46,12 +46,6 @@ NSString *const dotCharachter = @".";
     }
 
 
-- (IBAction)clearTaped:(id)sender {
-    
-    self.resultLabel.text = zeroCharacher;
-}
-
-
 - (void)deleteLastDigit{
     
     self.resultLabel.text = (self.resultLabel.text.length > 1) ? [self.resultLabel.text substringToIndex: self.resultLabel.text.length -1] : zeroCharacher;
