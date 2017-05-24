@@ -7,16 +7,17 @@
 //
 
 #import "ViewController.h"
-#import "AboutUS.h"
+
+#import "AboutUsViewController.h"
 #import "Calculator.h"
 
 
 @interface ViewController ()
 
-@property (retain, nonatomic) AboutUS *aboutView;
 @property (retain, nonatomic) IBOutlet UILabel *resultLabel;
 @property (retain, nonatomic) Calculator *calculatorModel;
 @property (assign, nonatomic) BOOL isDigitEnteringEnterupted;
+
 
 @end
 
@@ -27,7 +28,7 @@ NSString *const dotCharachter = @".";
 
 
 - (void)dealloc {
-    [_aboutView release];
+    
     [_resultLabel release];
     [_calculatorModel release];
     [super dealloc];
@@ -40,8 +41,15 @@ NSString *const dotCharachter = @".";
     UISwipeGestureRecognizer *swipe = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteLastDigit)]autorelease];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [self.resultLabel addGestureRecognizer:swipe];
+
     [self clearTaped:self];
     }
+
+
+- (IBAction)clearTaped:(id)sender {
+    
+    self.resultLabel.text = zeroCharacher;
+}
 
 
 - (void)deleteLastDigit{
@@ -50,6 +58,7 @@ NSString *const dotCharachter = @".";
 }
 
 - (IBAction)clearTaped:(id)sender {
+  
     self.resultLabel.text = zeroCharacher;
     self.calculatorModel = [[Calculator new] autorelease];
     self.isDigitEnteringEnterupted = NO;
@@ -103,6 +112,7 @@ NSString *const dotCharachter = @".";
     self.calculatorModel.firstOperand = self.resultLabel.text.doubleValue;
     
     self.isDigitEnteringEnterupted = YES;
+
 }
 
 
@@ -121,8 +131,7 @@ NSString *const dotCharachter = @".";
 
 - (IBAction)aboutTaped:(id)sender {
     
-    self.aboutView = [[[AboutUS alloc] init] autorelease];
-    [self.navigationController pushViewController:self.aboutView animated: YES];
+     [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
 }
 
 
