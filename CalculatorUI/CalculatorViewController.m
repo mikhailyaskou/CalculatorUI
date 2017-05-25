@@ -17,6 +17,8 @@
 @property (assign, nonatomic, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
 @property (assign, nonatomic, getter=isEquailsWasTaped) BOOL equailsWasTaped;
 
+@property (retain, nonatomic) IBOutlet UIStackView *mainStackView;
+@property (retain, nonatomic) IBOutlet UIStackView *operationStackView;
 
 @end
 
@@ -31,11 +33,15 @@ NSString *const dotCharachter = @".";
     
     [_resultLabel release];
     [_calculatorModel release];
+    [_operationStackView release];
+    [_mainStackView release];
     [super dealloc];
 }
 
 
 - (void)viewDidLoad {
+    
+    
     
     self.calculatorModel = [[Calculator new] autorelease];
     self.calculatorModel.delegate = self;
@@ -147,6 +153,22 @@ NSString *const dotCharachter = @".";
 - (IBAction)aboutTaped:(id)sender {
     
      [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
+}
+
+
+-(void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+
+    UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
+    int indexStackView;
+    
+    if (interfaceOrientation==1){
+        indexStackView = 3;
+    }else{
+        indexStackView = 0;
+    }
+    
+    [self.mainStackView removeArrangedSubview: self.operationStackView];
+    [self.mainStackView insertArrangedSubview:self.operationStackView atIndex: indexStackView];
 }
 
 
