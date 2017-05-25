@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  CalculatorViewController.h
 //  CalculatorUI
 //
 //  Created by Mikhail Yaskou on 11.05.17.
@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Calculator.h"
 
-@interface ViewController : UIViewController
+@protocol CalculatorDelegate;
+
+@interface CalculatorViewController : UIViewController <CalculatorDelegate>
 
 @end
 

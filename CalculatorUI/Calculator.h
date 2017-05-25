@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewController.h"
+
+@protocol  CalculatorDelegate;
+
+@protocol CalculatorDelegate <NSObject>
+
+-(void)resultUpdated: (NSString *)resultOfOperation;
+-(void)setDigitEnteringEnterupted: (BOOL)digitEnteringEnterupted;
+
+@end
 
 
 @interface Calculator : NSObject
@@ -16,9 +24,9 @@
 @property (nonatomic, assign) double firstOperand;
 @property (nonatomic, assign) double secondOperand;
 @property (nonatomic, assign) double unaryOperand;
+@property (nonatomic, assign) id <CalculatorDelegate> delegate;
 
 - (id)init;
-- (double)executeOperation:(NSString *) operation;
-- (double)equals;
+- (void)executeOperation:(NSString *) operation;
 
 @end
