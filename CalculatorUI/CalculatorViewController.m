@@ -20,10 +20,36 @@
 @property (retain, nonatomic) IBOutlet UIStackView *mainStackView;
 @property (retain, nonatomic) IBOutlet UIStackView *operationStackView;
 
+@property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allDigits;
+
 @end
 
 
-@implementation CalculatorViewController 
+@implementation CalculatorViewController
+
+@synthesize displayValue = _displayValue;
+
+-(void)setDisplayValue:(NSString *)displayValue {
+    
+    if (_displayValue!=displayValue){
+        [_displayValue release];
+        _displayValue = [displayValue retain];
+    }
+    
+    
+    
+    self.resultLabel.text = displayValue;
+}
+
+-(NSString *)displayValue{
+    
+    if (!self.isDigitEnteringEnterupted){
+        return self.resultLabel.text;
+    }else{
+        return  self.resultLabel.text;
+    }
+    
+}
 
 NSString *const zeroCharacher = @"0";
 NSString *const dotCharachter = @".";
@@ -41,8 +67,6 @@ NSString *const dotCharachter = @".";
 
 - (void)viewDidLoad {
     
-    
-    
     self.calculatorModel = [[Calculator new] autorelease];
     self.calculatorModel.delegate = self;
     self.digitEnteringEnterupted = YES;
@@ -55,18 +79,21 @@ NSString *const dotCharachter = @".";
     
 }
 
+- (IBAction)deleteLastDigitTaped:(id)sender {
+    [self deleteLastDigit];
+}
 
 - (void)deleteLastDigit{
     
-    self.resultLabel.text = (self.resultLabel.text.length > 1) ? [self.resultLabel.text substringToIndex: self.resultLabel.text.length -1] : zeroCharacher;
+    self.displayValue = (self.displayValue.length > 1) ? [self.displayValue substringToIndex: self.displayValue.length -1] : zeroCharacher;
 }
 
 - (IBAction)dotTaped:(id)sender {
     
-    NSRange range = [self.resultLabel.text rangeOfString:dotCharachter];
+    NSRange range = [self.displayValue rangeOfString:dotCharachter];
     if (range.location == NSNotFound)
     {
-        self.resultLabel.text = [self.resultLabel.text stringByAppendingString:dotCharachter];
+        self.displayValue = [self.displayValue stringByAppendingString:dotCharachter];
     }
 }
 
@@ -84,19 +111,19 @@ NSString *const dotCharachter = @".";
     
     
     //IF digit entering was interrupted or on display zero THAN start entering new display value
-    if (([self.resultLabel.text isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)){
+    if (([self.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)){
         
-        self.resultLabel.text=@"";
+        self.displayValue=@"";
         self.digitEnteringEnterupted = NO;
     }
-    self.resultLabel.text = [self.resultLabel.text stringByAppendingFormat:@"%g", sender.titleLabel.text.floatValue];
+    self.resultLabel.text = [self.displayValue stringByAppendingFormat:@"%@", sender.titleLabel.text];
 }
 
 
 - (IBAction)unaryOperationTaped:(UIButton *)sender {
     
     self.digitEnteringEnterupted = YES;
-    self.calculatorModel.unaryOperand = self.resultLabel.text.doubleValue;
+    self.calculatorModel.unaryOperand = self.displayValue.doubleValue;
     [self.calculatorModel executeOperation: sender.currentTitle];
 }
 
@@ -112,7 +139,7 @@ NSString *const dotCharachter = @".";
     } else {
     
          //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
-        self.calculatorModel.firstOperand = self.resultLabel.text.floatValue;
+        self.calculatorModel.firstOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
         self.equailsWasTaped = NO;
     }
     
@@ -128,13 +155,13 @@ NSString *const dotCharachter = @".";
     //SET second operand - IF digit entering enterupted OR second operator is not entered;
     if (!self.isDigitEnteringEnterupted || isnan(self.calculatorModel.secondOperand)) {
         
-    self.calculatorModel.secondOperand = self.resultLabel.text.doubleValue;
+    self.calculatorModel.secondOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
     }
     
     [self.calculatorModel executeOperation:self.calculatorModel.operator];
     
     //result is first operand now;
-    self.calculatorModel.firstOperand = self.resultLabel.text.doubleValue;
+    self.calculatorModel.firstOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
     
     //marking that the input of the digits was interrupted
     self.digitEnteringEnterupted = YES;
@@ -144,11 +171,34 @@ NSString *const dotCharachter = @".";
 
 -(void)resultUpdated:(NSString *)resultOfOperation{
     
-    self.resultLabel.text = resultOfOperation;
+    self.displayValue = [self.calculatorModel fromDecemial: resultOfOperation.floatValue];
 }
 
 
 #pragma mark ViewControl Managment
+
+- (IBAction)radixTaped:(UIButton*)sender {
+    
+    
+        
+    if (self.calculatorModel.radix !=sender.currentTitle.intValue){
+   
+        NSString *decemial = [self.calculatorModel toDecemial:self.resultLabel.text];
+       self.calculatorModel.radix = sender.currentTitle.intValue;
+    
+        //disable all buttos that less than crrent base.
+        for(UIButton *button in self.allDigits){
+            if (button.tag >= self.calculatorModel.radix){
+                button.enabled = NO;
+            }else{
+                button.enabled = YES;
+            }
+        }
+    
+     [self resultUpdated: decemial];
+    
+    }
+}
 
 - (IBAction)aboutTaped:(id)sender {
     

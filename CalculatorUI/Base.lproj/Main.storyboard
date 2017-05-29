@@ -6,330 +6,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calculator View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="40l-U4-xBE">
-                                <rect key="frame" x="0.0" y="120" width="414" height="615.33333333333337"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dlD-yY-rCK">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="615.33333333333337"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSF-g1-o4U">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="121.66666666666666"/>
-                                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="AC">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="clearTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ne9-Pc-8Nf"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qy8-OZ-nvb">
-                                                <rect key="frame" x="0.0" y="123.66666666666664" width="102" height="121.33333333333336"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="7">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="heE-kG-uEt"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUv-nx-Hgb">
-                                                <rect key="frame" x="0.0" y="246.99999999999997" width="102" height="121.33333333333329"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="4">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mpd-wl-eDX"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQZ-pm-lpG">
-                                                <rect key="frame" x="0.0" y="370.33333333333337" width="102" height="121.33333333333331"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="1">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U2Y-IQ-7Li"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-4q-Gay">
-                                                <rect key="frame" x="0.0" y="493.66666666666663" width="102" height="121.66666666666674"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="0">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ngb-Xc-BJS"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="iWi-4q-Gay" firstAttribute="height" secondItem="SSF-g1-o4U" secondAttribute="height" id="0cc-re-hng"/>
-                                            <constraint firstItem="qy8-OZ-nvb" firstAttribute="height" secondItem="SSF-g1-o4U" secondAttribute="height" id="6rS-Dh-30v"/>
-                                            <constraint firstItem="EQZ-pm-lpG" firstAttribute="height" secondItem="SSF-g1-o4U" secondAttribute="height" id="j8z-wE-PIC"/>
-                                            <constraint firstItem="XUv-nx-Hgb" firstAttribute="height" secondItem="SSF-g1-o4U" secondAttribute="height" id="wsp-g2-tZh"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4Tx-8R-m92">
-                                        <rect key="frame" x="104" y="0.0" width="102" height="615.33333333333337"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFu-YA-ZpB">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="121.66666666666666"/>
-                                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="+/-">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="unaryOperationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Plo-LX-5DT"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRW-5u-tpj">
-                                                <rect key="frame" x="0.0" y="123.66666666666664" width="102" height="121.33333333333336"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="8">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Irz-yJ-GdE"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-Dt-MvT">
-                                                <rect key="frame" x="0.0" y="246.99999999999997" width="102" height="121.33333333333329"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="5">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xsQ-XN-3jK"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2af-ve-9Tc">
-                                                <rect key="frame" x="0.0" y="370.33333333333337" width="102" height="121.33333333333331"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="2">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IEQ-0q-uNx"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-x0-8Wh">
-                                                <rect key="frame" x="0.0" y="493.66666666666663" width="102" height="121.66666666666674"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title=".">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="dotTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cJV-y6-9PH"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="2af-ve-9Tc" firstAttribute="height" secondItem="gFu-YA-ZpB" secondAttribute="height" id="OYb-RQ-YX0"/>
-                                            <constraint firstItem="eRW-5u-tpj" firstAttribute="height" secondItem="gFu-YA-ZpB" secondAttribute="height" id="Q1Q-Wn-J8G"/>
-                                            <constraint firstItem="dTj-x0-8Wh" firstAttribute="height" secondItem="gFu-YA-ZpB" secondAttribute="height" id="RxZ-0h-cGa"/>
-                                            <constraint firstItem="gO5-Dt-MvT" firstAttribute="height" secondItem="gFu-YA-ZpB" secondAttribute="height" id="mTH-fg-Pcz"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sDS-d1-vNb">
-                                        <rect key="frame" x="208" y="0.0" width="102" height="615.33333333333337"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIP-kA-aVc">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="121.66666666666666"/>
-                                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="%">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="unaryOperationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d2W-TV-vFm"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJl-RX-kHc">
-                                                <rect key="frame" x="0.0" y="123.66666666666664" width="102" height="121.33333333333336"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="9">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2lG-fR-EiX"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQR-v4-jzc">
-                                                <rect key="frame" x="0.0" y="246.99999999999997" width="102" height="121.33333333333329"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="6">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dA3-qz-igm"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcA-f3-T0O">
-                                                <rect key="frame" x="0.0" y="370.33333333333337" width="102" height="121.33333333333331"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="3">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="digitTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fke-mE-2XB"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqp-wW-I0l">
-                                                <rect key="frame" x="0.0" y="493.66666666666663" width="102" height="121.66666666666674"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="√">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="unaryOperationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y0N-PR-e6Z"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="fqp-wW-I0l" firstAttribute="height" secondItem="eIP-kA-aVc" secondAttribute="height" id="82V-k0-H2W"/>
-                                            <constraint firstItem="BcA-f3-T0O" firstAttribute="height" secondItem="eIP-kA-aVc" secondAttribute="height" id="EHE-bJ-unN"/>
-                                            <constraint firstItem="nJl-RX-kHc" firstAttribute="height" secondItem="eIP-kA-aVc" secondAttribute="height" id="fOC-6A-jtf"/>
-                                            <constraint firstItem="UQR-v4-jzc" firstAttribute="height" secondItem="eIP-kA-aVc" secondAttribute="height" id="sXF-G8-tQV"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hAg-ds-tli">
-                                        <rect key="frame" x="312" y="0.0" width="102" height="615.33333333333337"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUN-z6-VhH">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="121.66666666666666"/>
-                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="/">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1hN-dY-Pe5"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IK-tW-Gp2">
-                                                <rect key="frame" x="0.0" y="123.66666666666664" width="102" height="121.33333333333336"/>
-                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="*">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BVi-go-buz"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc2-E8-iHf">
-                                                <rect key="frame" x="0.0" y="246.99999999999997" width="102" height="121.33333333333329"/>
-                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="-">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TfX-TM-ddy"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIj-NL-WGV">
-                                                <rect key="frame" x="0.0" y="370.33333333333337" width="102" height="121.33333333333331"/>
-                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="+">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="operationTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PPB-Bl-A8P"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfP-mv-9OG">
-                                                <rect key="frame" x="0.0" y="493.66666666666663" width="102" height="121.66666666666674"/>
-                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
-                                                <state key="normal" title="=">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="equalsTaped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ks-if-cd3"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="EIj-NL-WGV" firstAttribute="height" secondItem="iUN-z6-VhH" secondAttribute="height" id="20e-Cj-54L"/>
-                                            <constraint firstItem="8IK-tW-Gp2" firstAttribute="height" secondItem="iUN-z6-VhH" secondAttribute="height" id="4Km-1j-aVQ"/>
-                                            <constraint firstItem="sc2-E8-iHf" firstAttribute="height" secondItem="iUN-z6-VhH" secondAttribute="height" id="C2l-4T-D0Z"/>
-                                            <constraint firstItem="yfP-mv-9OG" firstAttribute="height" secondItem="iUN-z6-VhH" secondAttribute="height" id="Wgy-SX-p4g"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="hAg-ds-tli" firstAttribute="width" secondItem="dlD-yY-rCK" secondAttribute="width" id="7GB-af-U4T"/>
-                                    <constraint firstItem="4Tx-8R-m92" firstAttribute="width" secondItem="dlD-yY-rCK" secondAttribute="width" id="R4d-b5-qqL"/>
-                                    <constraint firstItem="sDS-d1-vNb" firstAttribute="width" secondItem="dlD-yY-rCK" secondAttribute="width" id="tvg-bm-FbE"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAG-S9-hZ6">
-                                <rect key="frame" x="0.0" y="64" width="414" height="56"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="50"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="jAG-S9-hZ6" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3AH-AY-Yf4"/>
-                            <constraint firstItem="40l-U4-xBE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CLo-yG-gGH"/>
-                            <constraint firstItem="40l-U4-xBE" firstAttribute="top" secondItem="jAG-S9-hZ6" secondAttribute="bottom" id="M9E-HI-FeS"/>
-                            <constraint firstAttribute="trailing" secondItem="jAG-S9-hZ6" secondAttribute="trailing" id="Tl7-W6-qP0"/>
-                            <constraint firstItem="jAG-S9-hZ6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YCg-zK-cDR"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="40l-U4-xBE" secondAttribute="bottom" id="ezZ-ap-jPN"/>
-                            <constraint firstAttribute="trailing" secondItem="40l-U4-xBE" secondAttribute="trailing" id="sQM-wv-kVL"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Xsn-aP-X6u">
-                        <barButtonItem key="rightBarButtonItem" title="About" id="X7c-Oq-bt8">
-                            <connections>
-                                <action selector="aboutTaped:" destination="BYZ-38-t0r" id="Qb9-QO-nOD"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="mainStackView" destination="40l-U4-xBE" id="ikl-PW-fVd"/>
-                        <outlet property="operationStackView" destination="hAg-ds-tli" id="BeD-7H-m1e"/>
-                        <outlet property="resultLabel" destination="jAG-S9-hZ6" id="IPw-vA-NTz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1018.840579710145" y="118.20652173913044"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ovc-5u-3q7">
             <objects>
@@ -341,12 +21,529 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GfU-SA-37b"/>
+                        <segue destination="Xdi-ou-1Ai" kind="relationship" relationship="rootViewController" id="ftN-V0-ciz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nE2-FL-5WM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="111.59420289855073" y="118.20652173913044"/>
+        </scene>
+        <!--Calculator View Controller-->
+        <scene sceneID="8Qb-EB-MJf">
+            <objects>
+                <viewController id="Xdi-ou-1Ai" customClass="CalculatorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PSz-m5-WSc"/>
+                        <viewControllerLayoutGuide type="bottom" id="3cM-3y-5T1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G82-d6-PZv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YRX-aI-myA">
+                                <rect key="frame" x="0.0" y="120" width="414" height="616"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GTR-eQ-wbn">
+                                        <rect key="frame" x="0.0" y="0.0" width="102.33333333333333" height="616"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLC-hM-56t">
+                                                <rect key="frame" x="0.0" y="0.0" width="102.33333333333333" height="75.333333333333343"/>
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="radixTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="bWw-Oo-bBr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZG-ZH-Mat">
+                                                <rect key="frame" x="0.0" y="77.333333333333343" width="102.33333333333333" height="75.666666666666657"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="AC">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clearTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="u5m-TR-eew"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="13" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-Xl-yNI">
+                                                <rect key="frame" x="0.0" y="155" width="102.33333333333333" height="75"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="D">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="vUH-G5-dfQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="10" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDi-6z-wvA">
+                                                <rect key="frame" x="0.0" y="232.00000000000003" width="102.33333333333333" height="75.666666666666714"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="A">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="mbX-2Z-pUn"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwV-c5-RNM">
+                                                <rect key="frame" x="0.0" y="309.66666666666674" width="102.33333333333333" height="75.333333333333314"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="7">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="4ex-AT-akM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdi-a8-Y9l">
+                                                <rect key="frame" x="0.0" y="387" width="102.33333333333333" height="75.333333333333371"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="4">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="WB7-Ta-PSk"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oth-KO-Zgq">
+                                                <rect key="frame" x="0.0" y="464.33333333333337" width="102.33333333333333" height="75.333333333333258"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="1">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="1vT-gR-bUW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQD-ol-Js3">
+                                                <rect key="frame" x="0.0" y="541.66666666666652" width="102.33333333333333" height="74.333333333333371"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="0">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="1PF-Kh-FVL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="nDi-6z-wvA" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="0Vg-kg-F9J"/>
+                                            <constraint firstItem="Oth-KO-Zgq" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="QMx-jd-f6K"/>
+                                            <constraint firstItem="JZG-ZH-Mat" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="Zgu-aa-zzq"/>
+                                            <constraint firstItem="YQD-ol-Js3" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="del-3v-taY"/>
+                                            <constraint firstItem="zdi-a8-Y9l" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="eXU-4U-AQb"/>
+                                            <constraint firstItem="fwV-c5-RNM" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="jRK-8h-Vvz"/>
+                                            <constraint firstItem="CYR-Xl-yNI" firstAttribute="height" secondItem="mLC-hM-56t" secondAttribute="height" id="pp4-qm-BeW"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZhV-89-nFX">
+                                        <rect key="frame" x="104.33333333333331" y="0.0" width="101.66666666666669" height="616"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCT-N0-rPB">
+                                                <rect key="frame" x="0.0" y="0.0" width="101.66666666666667" height="75.333333333333343"/>
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="8">
+                                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="radixTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="FW9-UG-KXF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKj-w7-evA">
+                                                <rect key="frame" x="0.0" y="77.333333333333343" width="101.66666666666667" height="75.666666666666657"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="+/-">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="unaryOperationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="It0-Xo-RWD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="14" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-K5-WeN">
+                                                <rect key="frame" x="0.0" y="155" width="101.66666666666667" height="75"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="E">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="gq4-Ce-a6s"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="11" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LD-zZ-MmS">
+                                                <rect key="frame" x="0.0" y="232.00000000000003" width="101.66666666666667" height="75.666666666666714"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="B">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="hbi-Qe-Ihm"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flS-do-05r">
+                                                <rect key="frame" x="0.0" y="309.66666666666674" width="101.66666666666667" height="75.333333333333314"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="8">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="44I-qh-395"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWa-y6-giz">
+                                                <rect key="frame" x="0.0" y="387" width="101.66666666666667" height="75.333333333333371"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="5">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="PPs-G3-HBc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-6H-ep3">
+                                                <rect key="frame" x="0.0" y="464.33333333333337" width="101.66666666666667" height="75.333333333333258"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="2">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="Ksy-GK-FPQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CP-Qu-2sP">
+                                                <rect key="frame" x="0.0" y="541.66666666666652" width="101.66666666666667" height="74.333333333333371"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title=".">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="dotTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="TBR-uw-Gue"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="UKj-w7-evA" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="0eS-Ng-DYM"/>
+                                            <constraint firstItem="q6Z-6H-ep3" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="Pej-h5-PSU"/>
+                                            <constraint firstItem="0CP-Qu-2sP" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="et2-mB-Rna"/>
+                                            <constraint firstItem="fWa-y6-giz" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="nod-iC-b4d"/>
+                                            <constraint firstItem="0LD-zZ-MmS" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="oMU-v4-A8m"/>
+                                            <constraint firstItem="DpO-K5-WeN" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="r65-pt-GuO"/>
+                                            <constraint firstItem="flS-do-05r" firstAttribute="height" secondItem="yCT-N0-rPB" secondAttribute="height" id="sT9-6e-SAT"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="RgN-Gk-oq5">
+                                        <rect key="frame" x="207.99999999999997" y="0.0" width="102.33333333333329" height="616"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-gM-3lm">
+                                                <rect key="frame" x="0.0" y="0.0" width="102.33333333333331" height="75.333333333333343"/>
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="10">
+                                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="radixTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="VFk-6E-BEj"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-wW-2sY">
+                                                <rect key="frame" x="0.0" y="77.333333333333343" width="102.33333333333331" height="75.666666666666657"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="%">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="unaryOperationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="b5u-jT-GBp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="15" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgf-nn-8ID">
+                                                <rect key="frame" x="0.0" y="155" width="102.33333333333331" height="75"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="F">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="cN7-sI-rDv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="12" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gs9-Vf-xT8">
+                                                <rect key="frame" x="0.0" y="232.00000000000003" width="102.33333333333331" height="75.666666666666714"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="C">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="z0o-YZ-cC0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sum-LI-xL4">
+                                                <rect key="frame" x="0.0" y="309.66666666666674" width="102.33333333333331" height="75.333333333333314"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="9">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="sWq-gE-7nr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huh-q0-JcP">
+                                                <rect key="frame" x="0.0" y="387" width="102.33333333333331" height="75.333333333333371"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="6">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="t6e-Ew-y3M"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTT-xK-C0E">
+                                                <rect key="frame" x="0.0" y="464.33333333333337" width="102.33333333333331" height="75.333333333333258"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="3">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="digitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="zcp-bY-O7H"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jhr-cx-hhA">
+                                                <rect key="frame" x="0.0" y="541.66666666666652" width="102.33333333333331" height="74.333333333333371"/>
+                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="√">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="unaryOperationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="RKf-gG-1kk"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Jhr-cx-hhA" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="6bB-XA-cW2"/>
+                                            <constraint firstItem="Sum-LI-xL4" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="Xai-7y-xfU"/>
+                                            <constraint firstItem="FTT-xK-C0E" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="eLe-yZ-KIn"/>
+                                            <constraint firstItem="3fD-wW-2sY" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="eV4-9z-PUP"/>
+                                            <constraint firstItem="lgf-nn-8ID" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="jGz-K3-Tpo"/>
+                                            <constraint firstItem="Gs9-Vf-xT8" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="lou-aE-KtK"/>
+                                            <constraint firstItem="huh-q0-JcP" firstAttribute="height" secondItem="eRU-gM-3lm" secondAttribute="height" id="vnt-fx-7E8"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qKB-vi-W7Y">
+                                        <rect key="frame" x="312.33333333333326" y="0.0" width="101.66666666666669" height="616"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOa-9P-P3p">
+                                                <rect key="frame" x="0.0" y="0.0" width="101.66666666666669" height="75.666666666666657"/>
+                                                <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="16">
+                                                    <color key="titleColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="radixTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="fdM-KS-VH3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P6-ji-GfW">
+                                                <rect key="frame" x="0.0" y="77.666666666666657" width="101.66666666666669" height="76.000000000000028"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="→">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteLastDigitTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="aMw-s3-00H"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-AL-2VP">
+                                                <rect key="frame" x="0.0" y="155.66666666666669" width="101.66666666666669" height="75"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="/">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="operationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="tJ7-uv-h4I"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuu-GS-F3T">
+                                                <rect key="frame" x="0.0" y="232.66666666666671" width="101.66666666666669" height="75.333333333333286"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="*">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="operationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="whz-W5-gpF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoE-6C-yph">
+                                                <rect key="frame" x="0.0" y="310" width="101.66666666666669" height="75.333333333333314"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="-">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="operationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="MDD-fz-1FL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZb-3U-zaQ">
+                                                <rect key="frame" x="0.0" y="387.33333333333337" width="101.66666666666669" height="75.000000000000057"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="operationTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="BAe-J4-4B0"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-t3-z0a">
+                                                <rect key="frame" x="0.0" y="464.33333333333343" width="101.66666666666669" height="151.66666666666657"/>
+                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
+                                                <state key="normal" title="=">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="equalsTaped:" destination="Xdi-ou-1Ai" eventType="touchUpInside" id="LEa-So-pYG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="wAZ-AL-2VP" firstAttribute="height" secondItem="NOa-9P-P3p" secondAttribute="height" id="3b1-R9-U34"/>
+                                            <constraint firstItem="Iuu-GS-F3T" firstAttribute="height" secondItem="NOa-9P-P3p" secondAttribute="height" id="QRg-UA-blL"/>
+                                            <constraint firstItem="0P6-ji-GfW" firstAttribute="height" secondItem="NOa-9P-P3p" secondAttribute="height" id="Tpx-Lh-z62"/>
+                                            <constraint firstItem="OZb-3U-zaQ" firstAttribute="height" secondItem="NOa-9P-P3p" secondAttribute="height" id="hck-mU-pxM"/>
+                                            <constraint firstItem="BoE-6C-yph" firstAttribute="height" secondItem="NOa-9P-P3p" secondAttribute="height" id="zoB-E5-fMj"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZhV-89-nFX" firstAttribute="width" secondItem="GTR-eQ-wbn" secondAttribute="width" id="8ay-h4-E7E"/>
+                                    <constraint firstItem="qKB-vi-W7Y" firstAttribute="width" secondItem="GTR-eQ-wbn" secondAttribute="width" id="FKh-4U-aQJ"/>
+                                    <constraint firstItem="8Ea-t3-z0a" firstAttribute="height" secondItem="Jhr-cx-hhA" secondAttribute="height" multiplier="2" constant="2" id="gSj-xC-Dmd"/>
+                                    <constraint firstItem="RgN-Gk-oq5" firstAttribute="width" secondItem="GTR-eQ-wbn" secondAttribute="width" id="tXV-Pg-npP"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6q-aG-Xq1">
+                                <rect key="frame" x="0.0" y="64" width="414" height="56"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="50"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="i6q-aG-Xq1" firstAttribute="leading" secondItem="G82-d6-PZv" secondAttribute="leading" id="02w-DV-qW9"/>
+                            <constraint firstAttribute="trailing" secondItem="i6q-aG-Xq1" secondAttribute="trailing" id="5oM-Pr-jJE"/>
+                            <constraint firstItem="i6q-aG-Xq1" firstAttribute="top" secondItem="PSz-m5-WSc" secondAttribute="bottom" id="83Q-Hj-rBY"/>
+                            <constraint firstAttribute="trailing" secondItem="YRX-aI-myA" secondAttribute="trailing" id="Cqa-iI-chJ"/>
+                            <constraint firstItem="3cM-3y-5T1" firstAttribute="top" secondItem="YRX-aI-myA" secondAttribute="bottom" id="HbU-4s-jnA"/>
+                            <constraint firstItem="YRX-aI-myA" firstAttribute="top" secondItem="i6q-aG-Xq1" secondAttribute="bottom" id="eaD-BL-VPL"/>
+                            <constraint firstItem="YRX-aI-myA" firstAttribute="leading" secondItem="G82-d6-PZv" secondAttribute="leading" id="pIe-px-Q96"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="I04-vf-6gE">
+                        <barButtonItem key="rightBarButtonItem" title="About" id="YAK-fA-0sw">
+                            <connections>
+                                <action selector="aboutTaped:" destination="Xdi-ou-1Ai" id="2Bh-tW-Orh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mainStackView" destination="YRX-aI-myA" id="Zwt-z6-Ieb"/>
+                        <outlet property="operationStackView" destination="qKB-vi-W7Y" id="s6c-QP-mdQ"/>
+                        <outlet property="resultLabel" destination="i6q-aG-Xq1" id="5LS-Sc-HZP"/>
+                        <outletCollection property="allDigits" destination="CYR-Xl-yNI" id="24B-kG-KgS"/>
+                        <outletCollection property="allDigits" destination="nDi-6z-wvA" id="a4M-FG-1cp"/>
+                        <outletCollection property="allDigits" destination="fwV-c5-RNM" id="lXW-kh-QyM"/>
+                        <outletCollection property="allDigits" destination="zdi-a8-Y9l" id="1Ji-2C-JEY"/>
+                        <outletCollection property="allDigits" destination="Oth-KO-Zgq" id="Zew-Wo-izy"/>
+                        <outletCollection property="allDigits" destination="YQD-ol-Js3" id="NA1-0E-Cey"/>
+                        <outletCollection property="allDigits" destination="DpO-K5-WeN" id="zQg-to-e7s"/>
+                        <outletCollection property="allDigits" destination="0LD-zZ-MmS" id="XtG-0r-gt4"/>
+                        <outletCollection property="allDigits" destination="flS-do-05r" id="Pxa-4d-Qfs"/>
+                        <outletCollection property="allDigits" destination="fWa-y6-giz" id="39m-dU-IoQ"/>
+                        <outletCollection property="allDigits" destination="q6Z-6H-ep3" id="Gp7-Yr-EZc"/>
+                        <outletCollection property="allDigits" destination="lgf-nn-8ID" id="qKf-zy-Aa0"/>
+                        <outletCollection property="allDigits" destination="Gs9-Vf-xT8" id="ffD-fk-8Rd"/>
+                        <outletCollection property="allDigits" destination="Sum-LI-xL4" id="WUt-R1-FH5"/>
+                        <outletCollection property="allDigits" destination="huh-q0-JcP" id="0j8-Y3-hpd"/>
+                        <outletCollection property="allDigits" destination="FTT-xK-C0E" id="5DU-hP-Wyh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VfU-uW-p0t" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="118"/>
         </scene>
     </scenes>
 </document>

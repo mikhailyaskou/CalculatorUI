@@ -12,6 +12,8 @@
 
 @protocol CalculatorDelegate <NSObject>
 
+@property (nonatomic, retain) NSString *displayValue;
+
 -(void)resultUpdated: (NSString *)resultOfOperation;
 -(void)setDigitEnteringEnterupted: (BOOL)digitEnteringEnterupted;
 
@@ -24,9 +26,13 @@
 @property (nonatomic, assign) double firstOperand;
 @property (nonatomic, assign) double secondOperand;
 @property (nonatomic, assign) double unaryOperand;
+@property (nonatomic, assign) int radix;
 @property (nonatomic, assign) id <CalculatorDelegate> delegate;
 
 - (id)init;
 - (void)executeOperation:(NSString *) operation;
+- (NSString*)toDecemial: (NSString *) displayLabel;
+- (NSString*)fromDecemial: (double) operand;
+
 
 @end
