@@ -21,7 +21,6 @@
 
 @implementation Calculator
 
-
 - (id)init {
     
     if(self = [super init]) {
@@ -37,6 +36,7 @@
                                  @"=":@"equals",};
         self.firstOperand = NAN;
         self.secondOperand = NAN;
+        self.radix = 10;
     }
     
     return self;
@@ -67,6 +67,53 @@
     return _numberFormatter;
 }
 
+
+-(NSString *)toDecemial:(NSString *)displayLabel {
+    
+    return  [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)];
+}
+
+
+
+-(NSString *)fromDecemial:(double)operand {
+    
+    NSString *returnValue = @"0";
+    
+    
+    switch (self.radix) {
+        case 2:
+            
+        //from decimal to binary
+        {
+            NSString *newDec = [NSString stringWithFormat:@"%g", operand];
+            NSUInteger x = [newDec integerValue];
+            int i = 0;
+            while (x > 0) {
+                returnValue = [[NSString stringWithFormat:@"%lu", x&1] stringByAppendingString:returnValue];
+                x = x>> 1;
+                ++i;
+            }
+            
+            break;
+        }
+        case 8:
+            
+            returnValue = [NSString stringWithFormat: @"%o", (int) operand];
+          
+            break;
+        case 10:
+            returnValue = [NSString stringWithFormat:@"%g", operand];
+            break;
+        case 16:
+           returnValue = [NSString stringWithFormat: @"%X", (int) operand];
+            
+            break;
+        default:
+            break;
+    }
+    
+    return returnValue;
+}
 
 #pragma mark - Operations
 
