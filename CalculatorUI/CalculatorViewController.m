@@ -62,9 +62,6 @@ NSString *const dotCharachter = @".";
     
     self.calculatorModel = [[Calculator new] autorelease];
     self.calculatorModel.delegate = self;
-    self.digitEnteringEnterupted = YES;
-    self.equailsWasTaped = NO;
-    
     [super viewDidLoad];
     UISwipeGestureRecognizer *swipe = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteLastDigit)]autorelease];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -91,10 +88,7 @@ NSString *const dotCharachter = @".";
 }
 
 - (IBAction)clearTaped:(UIButton *)sender {
-    
-    
     [self.calculatorModel executeOperation:sender.currentTitle];
-    self.digitEnteringEnterupted = YES;
 }
 
 #pragma mark Calculate operatins
@@ -102,71 +96,28 @@ NSString *const dotCharachter = @".";
 
 - (IBAction)digitTaped:(UIButton *)sender {
     
-    
     //IF digit entering was interrupted or on display zero THAN start entering new display value
     if (([self.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)){
         
         self.displayValue=@"";
         self.digitEnteringEnterupted = NO;
     }
-    self.resultLabel.text = [self.displayValue stringByAppendingFormat:@"%@", sender.titleLabel.text];
+    self.displayValue = [self.displayValue stringByAppendingFormat:@"%@", sender.titleLabel.text];
 }
 
 
 - (IBAction)unaryOperationTaped:(UIButton *)sender {
-    
-    self.digitEnteringEnterupted = YES;
+
     self.calculatorModel.unaryOperand = self.displayValue.doubleValue;
     [self.calculatorModel executeOperation: sender.currentTitle];
 }
 
 
-/*- (IBAction)operationTaped:(UIButton *)sender {
-    
-    //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
-    if (!isnan(self.calculatorModel.firstOperand) && !self.isDigitEnteringEnterupted && !self.isEquailsWasTaped){
-        
-        [self equalsTaped:self];
-        //restore equailsWasTaped after changes in [self equalsTaped:self];
-        self.equailsWasTaped = NO;
-    } else {
-    
-         //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
-        self.calculatorModel.firstOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
-        self.equailsWasTaped = NO;
-    }
-    
-    //take current operator.
-    self.calculatorModel.operator = sender.currentTitle;
-    //marking that the input of the digits was interrupted
-    
-    self.digitEnteringEnterupted = YES;
-}*/
-
-
-/*- (IBAction)equalsTaped:(id)sender {
-    
-    //SET second operand - IF digit entering enterupted OR second operator is not entered;
-    if (!self.isDigitEnteringEnterupted || isnan(self.calculatorModel.secondOperand)) {
-    self.calculatorModel.secondOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
-    }
-    
-    [self.calculatorModel executeOperation:self.calculatorModel.operator];
-    
-    //result is first operand now;
-    self.calculatorModel.firstOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
-    
-    //marking that the input of the digits was interrupted
-    
-    self.digitEnteringEnterupted = YES;
-    self.equailsWasTaped = YES;
-}*/
-
 - (IBAction)operationTaped:(UIButton *)sender {
     
     [self.calculatorModel operationTaped: sender.currentTitle];
-    
 }
+
 
 - (IBAction)equalsTaped:(id)sender {
     
@@ -179,14 +130,13 @@ NSString *const dotCharachter = @".";
     self.displayValue = [self.calculatorModel fromDecemial: resultOfOperation.floatValue];
 }
 
-
 #pragma mark ViewControl Managment
 
 - (IBAction)radixTaped:(UIButton*)sender {
 
     if (self.calculatorModel.radix !=sender.currentTitle.intValue){
         
-        NSString *decemial = [self.calculatorModel toDecemial:self.resultLabel.text];
+        NSString *decemial = [self.calculatorModel toDecemial:self.displayValue];
         self.calculatorModel.radix = sender.currentTitle.intValue;
     
         //disable all buttos that less than crrent base.

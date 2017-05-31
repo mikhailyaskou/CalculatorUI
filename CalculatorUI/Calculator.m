@@ -18,7 +18,6 @@
 
 @end
 
-
 @implementation Calculator
 
 static NSString * const plus = @"+";
@@ -79,7 +78,8 @@ static NSString * const equals =@"=";
 
 -(NSString *)toDecemial:(NSString *)displayLabel {
     
-    return  [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)];
+    //check if now in decimal than just return current value
+    return ((self.radix = 10)  ? displayLabel : [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)]) ;
 }
 
 
@@ -124,12 +124,10 @@ static NSString * const equals =@"=";
 #pragma mark - Operations
 
 - (void)executeOperation:(NSString *)operation {
-    
-    
+
     SEL operationMethodName = NSSelectorFromString([self.mapOfOperations valueForKey:operation]);
 
     if ([self respondsToSelector:operationMethodName]) {
-        
         
         [self performSelector:operationMethodName];
         [self.delegate resultUpdated: [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]]];
@@ -137,57 +135,45 @@ static NSString * const equals =@"=";
         //if result is error value than clear calculator model, and set setDigitEnteringEnterupted to reset displayLabel;
         if (isnan(self.result) || self.result == INFINITY){
             [self clear];
-            [self.delegate setDigitEnteringEnterupted: YES];
         }
-        
-        
-        
     }
+    
+    //marking that the input of the digits was interrupted
+    self.delegate.digitEnteringEnterupted = YES;
+    self.delegate.equailsWasTaped = YES;
 }
-
 
 
 - (void)operationTaped:(NSString *)operation {
     
-    
     //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
     if (!isnan(self.firstOperand) && !self.delegate.isDigitEnteringEnterupted && !self.delegate.isEquailsWasTaped){
-        
         [self equalsTaped];
-        //restore equailsWasTaped after changes in [self equalsTaped:self];
-        self.delegate.equailsWasTaped = NO;
     } else {
-        
         //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
         self.firstOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-        self.delegate.equailsWasTaped = NO;
     }
     
     //take current operator.
     self.operator = operation;
     //marking that the input of the digits was interrupted
-    
     self.delegate.digitEnteringEnterupted = YES;
-
+    //restore equailsWasTaped after changes in [self equalsTaped:self];
+    self.delegate.equailsWasTaped = NO;
 }
 
 
 - (void)equalsTaped {
-    
+
     //SET second operand - IF digit entering enterupted OR second operator is not entered;
     if (!self.delegate.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
         self.secondOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
     }
     
     [self executeOperation: self.operator];
-    
+
     //result is first operand now;
     self.firstOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-    
-    //marking that the input of the digits was interrupted
-    
-    self.delegate.digitEnteringEnterupted = YES;
-    self.delegate.equailsWasTaped = YES;
 }
 
 
@@ -229,33 +215,12 @@ static NSString * const equals =@"=";
 
 
 -(void)getPrecent {
-    self.result = self.unaryOperand / 100;
+    self.result = [self toDecemial:  self.delegate.displayValue].doubleValue / 100;
 }
 
 
 -(void)getSquareRoot{
-        self.result = sqrt(self.unaryOperand);
+        self.result = sqrt([self toDecemial:  self.delegate.displayValue].doubleValue);
 }
-
-
--(void)equals{
-    
-    //SET second operand - IF digit entering enterupted OR second operator is not entered;
-    if (!self.delegate.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
-        self.secondOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-    }
-    
-    [self executeOperation: self.operator];
-    
-    //result is first operand now;
-    self.firstOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-    
-    //marking that the input of the digits was interrupted
-    
-    self.delegate.digitEnteringEnterupted = YES;
-    self.delegate.equailsWasTaped = YES;
-}
-
-
 
 @end
