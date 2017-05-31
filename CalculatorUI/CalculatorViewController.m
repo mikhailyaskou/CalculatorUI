@@ -14,12 +14,10 @@
 
 @property (retain, nonatomic) IBOutlet UILabel *resultLabel;
 @property (retain, nonatomic) Calculator *calculatorModel;
-@property (assign, nonatomic, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
-@property (assign, nonatomic, getter=isEquailsWasTaped) BOOL equailsWasTaped;
-
+//@property (assign, nonatomic, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
+//@property (assign, nonatomic, getter=isEquailsWasTaped) BOOL equailsWasTaped;
 @property (retain, nonatomic) IBOutlet UIStackView *mainStackView;
 @property (retain, nonatomic) IBOutlet UIStackView *operationStackView;
-
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allDigits;
 
 @end
@@ -27,7 +25,11 @@
 
 @implementation CalculatorViewController
 
+@synthesize equailsWasTaped = _equailsWasTaped;
+@synthesize digitEnteringEnterupted = _digitEnteringEnterupted;
 @synthesize displayValue = _displayValue;
+
+
 
 -(void)setDisplayValue:(NSString *)displayValue {
     
@@ -35,20 +37,11 @@
         [_displayValue release];
         _displayValue = [displayValue retain];
     }
-    
-    
-    
     self.resultLabel.text = displayValue;
 }
 
 -(NSString *)displayValue{
-    
-    if (!self.isDigitEnteringEnterupted){
-        return self.resultLabel.text;
-    }else{
-        return  self.resultLabel.text;
-    }
-    
+    return  self.resultLabel.text;
 }
 
 NSString *const zeroCharacher = @"0";
@@ -128,7 +121,7 @@ NSString *const dotCharachter = @".";
 }
 
 
-- (IBAction)operationTaped:(UIButton *)sender {
+/*- (IBAction)operationTaped:(UIButton *)sender {
     
     //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
     if (!isnan(self.calculatorModel.firstOperand) && !self.isDigitEnteringEnterupted && !self.isEquailsWasTaped){
@@ -146,15 +139,15 @@ NSString *const dotCharachter = @".";
     //take current operator.
     self.calculatorModel.operator = sender.currentTitle;
     //marking that the input of the digits was interrupted
+    
     self.digitEnteringEnterupted = YES;
-    }
+}*/
 
 
-- (IBAction)equalsTaped:(id)sender {
+/*- (IBAction)equalsTaped:(id)sender {
     
     //SET second operand - IF digit entering enterupted OR second operator is not entered;
     if (!self.isDigitEnteringEnterupted || isnan(self.calculatorModel.secondOperand)) {
-        
     self.calculatorModel.secondOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
     }
     
@@ -164,8 +157,20 @@ NSString *const dotCharachter = @".";
     self.calculatorModel.firstOperand = [self.calculatorModel toDecemial:  self.displayValue].doubleValue;
     
     //marking that the input of the digits was interrupted
+    
     self.digitEnteringEnterupted = YES;
     self.equailsWasTaped = YES;
+}*/
+
+- (IBAction)operationTaped:(UIButton *)sender {
+    
+    [self.calculatorModel operationTaped: sender.currentTitle];
+    
+}
+
+- (IBAction)equalsTaped:(id)sender {
+    
+    [self.calculatorModel equalsTaped];
 }
 
 
@@ -178,13 +183,11 @@ NSString *const dotCharachter = @".";
 #pragma mark ViewControl Managment
 
 - (IBAction)radixTaped:(UIButton*)sender {
-    
-    
-        
+
     if (self.calculatorModel.radix !=sender.currentTitle.intValue){
-   
+        
         NSString *decemial = [self.calculatorModel toDecemial:self.resultLabel.text];
-       self.calculatorModel.radix = sender.currentTitle.intValue;
+        self.calculatorModel.radix = sender.currentTitle.intValue;
     
         //disable all buttos that less than crrent base.
         for(UIButton *button in self.allDigits){
@@ -194,9 +197,7 @@ NSString *const dotCharachter = @".";
                 button.enabled = YES;
             }
         }
-    
      [self resultUpdated: decemial];
-    
     }
 }
 
@@ -206,17 +207,15 @@ NSString *const dotCharachter = @".";
 }
 
 
--(void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
 
     UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
     int indexStackView;
-    
     if (interfaceOrientation==1){
         indexStackView = 3;
     }else{
         indexStackView = 0;
     }
-    
     [self.mainStackView removeArrangedSubview: self.operationStackView];
     [self.mainStackView insertArrangedSubview:self.operationStackView atIndex: indexStackView];
 }
