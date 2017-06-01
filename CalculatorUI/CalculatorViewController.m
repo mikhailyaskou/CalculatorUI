@@ -19,6 +19,7 @@
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allDigits;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allRadixButton;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *disabledButtonsInLandscapeMode;
+@property (retain, nonatomic) NSString *decimalSymbol;
 
 @end
 
@@ -26,7 +27,6 @@
 @implementation CalculatorViewController
 
 static NSString *const zeroCharacher = @"0";
-static NSString *const dotCharachter = @".";
 static int interfaceOrientationPortrait = 1;
 static int indexStackViewPortraitPosition = 3;
 static int indexStackViewLandscapePosition = 0;
@@ -77,6 +77,9 @@ static int const defaultRadix = 10;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
     [self updateRadixAdndInterface: defaultRadix];
+    
+    NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
+    self.decimalSymbol = [formatter decimalSeparator];
 }
 
 
@@ -90,9 +93,9 @@ static int const defaultRadix = 10;
 }
 
 - (IBAction)dotTaped:(id)sender {
-    NSRange range = [self.displayValue rangeOfString:dotCharachter];
+    NSRange range = [self.displayValue rangeOfString:self.decimalSymbol];
     if (range.location == NSNotFound) {
-        self.displayValue = [self.displayValue stringByAppendingString:dotCharachter];
+        self.displayValue = [self.displayValue stringByAppendingString:self.decimalSymbol];
     }
 }
 
