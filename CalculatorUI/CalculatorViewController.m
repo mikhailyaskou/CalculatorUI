@@ -17,6 +17,8 @@
 @property (retain, nonatomic) IBOutlet UIStackView *mainStackView;
 @property (retain, nonatomic) IBOutlet UIStackView *operationStackView;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allDigits;
+@property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allRadixButton;
+@property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *disabledButtonsInLandscapeMode;
 
 @end
 
@@ -25,13 +27,17 @@
 
 static NSString *const zeroCharacher = @"0";
 static NSString *const dotCharachter = @".";
+static int interfaceOrientationPortrait = 1;
+static int indexStackViewPortraitPosition = 3;
+static int indexStackViewLandscapePosition = 0;
+static int const defaultRadix = 10;
 
 @synthesize displayValue = _displayValue;
 
 
 -(void)setDisplayValue:(NSString *)displayValue {
     
-    if (_displayValue!=displayValue){
+    if (_displayValue!=displayValue) {
         [_displayValue release];
         _displayValue = [displayValue retain];
     }
@@ -51,17 +57,26 @@ static NSString *const dotCharachter = @".";
     [_mainStackView release];
     [_allDigits release];
     [_displayValue release];
+    [_allRadixButton release];
+    [_disabledButtonsInLandscapeMode release];
     [super dealloc];
 }
 
 
 - (void)viewDidLoad {
-    self.calculatorModel = [[Calculator new] autorelease];
-    self.calculatorModel.delegate = self;
     [super viewDidLoad];
+    //connect model
+    self.calculatorModel = [[Calculator new] autorelease];
+    //connect delegate
+    self.calculatorModel.delegate = self;
+    //adding gesture for delete last digit
     UISwipeGestureRecognizer *swipe = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(deleteLastDigit)]autorelease];
     swipe.direction = UISwipeGestureRecognizerDirectionRight;
     [self.resultLabel addGestureRecognizer:swipe];
+    //drow interface depending on the orientation;
+    [self updateInterfaceWhenOrientationChanged];
+    //set radix to default;
+    [self updateRadixAdndInterface: defaultRadix];
 }
 
 
@@ -77,8 +92,7 @@ static NSString *const dotCharachter = @".";
 - (IBAction)dotTaped:(id)sender {
     
     NSRange range = [self.displayValue rangeOfString:dotCharachter];
-    if (range.location == NSNotFound)
-    {
+    if (range.location == NSNotFound) {
         self.displayValue = [self.displayValue stringByAppendingString:dotCharachter];
     }
 }
@@ -111,28 +125,23 @@ static NSString *const dotCharachter = @".";
     [self.calculatorModel equalsTaped];
 }
 
-
--(void)resultUpdated:(NSString *)resultOfOperation{
-    
-    self.displayValue = [self.calculatorModel fromDecemial: resultOfOperation.floatValue];
-}
-
 #pragma mark ViewControl Managment
 
 - (IBAction)radixTaped:(UIButton*)sender {
     
-    if (self.calculatorModel.radix !=sender.currentTitle.intValue){
-        NSString *decemial = [self.calculatorModel toDecemial:self.displayValue];
-        self.calculatorModel.radix = sender.currentTitle.intValue;
-        //disable all buttos that less than crrent base.
-        for(UIButton *button in self.allDigits){
-            if (button.tag >= self.calculatorModel.radix){
-                button.enabled = NO;
-            }else{
-                button.enabled = YES;
-            }
+    [self updateRadixAdndInterface:sender.currentTitle.intValue];
+}
+
+- (void)updateRadixAdndInterface:(int) radix{
+    //update value
+    [self.calculatorModel updatingRadix: radix];
+    //update interface
+    for (UIButton *button in self.allDigits) {
+        if (button.tag >= radix){
+            button.enabled = NO;
+        } else {
+            button.enabled = YES;
         }
-        [self resultUpdated: decemial];
     }
 }
 
@@ -142,17 +151,34 @@ static NSString *const dotCharachter = @".";
 }
 
 
-- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id< UIViewControllerTransitionCoordinator>)coordinator {
+
+    //redrow interface for current orientaion
+    [self updateInterfaceWhenOrientationChanged];
+    //reset radix to decemial
+    [self updateRadixAdndInterface: defaultRadix];
+}
+
+- (void)updateInterfaceWhenOrientationChanged {
     
-    UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
-    int indexStackView;
-    if (interfaceOrientation==1){
-        indexStackView = 3;
-    }else{
-        indexStackView = 0;
-    }
-    [self.mainStackView removeArrangedSubview: self.operationStackView];
-    [self.mainStackView insertArrangedSubview:self.operationStackView atIndex: indexStackView];
+        UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
+        BOOL radixDisableFlag;
+        int indexStackView;
+        if (interfaceOrientation == interfaceOrientationPortrait){
+            radixDisableFlag = YES;
+            indexStackView = indexStackViewPortraitPosition;
+        } else {
+            indexStackView = indexStackViewLandscapePosition;
+            radixDisableFlag = NO;
+        }
+        for (UIButton *button in self.allRadixButton) {
+            button.hidden = radixDisableFlag;
+        }
+        for (UIButton *button in self.disabledButtonsInLandscapeMode) {
+            button.enabled = radixDisableFlag;
+        }
+        [self.mainStackView removeArrangedSubview: self.operationStackView];
+        [self.mainStackView insertArrangedSubview: self.operationStackView atIndex:indexStackView];
 }
 
 

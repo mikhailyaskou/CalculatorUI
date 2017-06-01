@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString *operator;
 @property (nonatomic, assign, getter=isEquailsWasTaped) BOOL equailsWasTaped;
 @property (nonatomic, assign, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
+@property (nonatomic, assign) int radix;
 
 @end
 
@@ -41,7 +42,7 @@ static NSString * const clear =@"AC";
 static NSString * const equals =@"=";
 
 - (id)init {
-    if(self = [super init]) {
+    if (self = [super init]) {
         _mapOfOperations = @{plus:@"add",
                              minus:@"sub",
                              multiply:@"mul",
@@ -86,7 +87,7 @@ static NSString * const equals =@"=";
 -(NSString *)toDecemial:(NSString *)displayLabel {
     
     //check if now in decimal than just return current value
-    if (self.radix == 10){
+    if (self.radix == 10) {
         return  displayLabel;
     } else {
         return [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)];
@@ -100,7 +101,6 @@ static NSString * const equals =@"=";
     NSString *returnValue = zeroCharacher;
     switch (self.radix) {
         case 2:
-            
             //from decimal to binary
         {
             NSString *newDec = [NSString stringWithFormat:@"%g", operand];
@@ -128,6 +128,17 @@ static NSString * const equals =@"=";
     return returnValue;
 }
 
+
+- (void)updatingRadix:(int) radix{
+    
+    if (self.radix !=radix){
+        NSString *decemial = [self toDecemial:  self.delegate.displayValue];
+        self.radix = radix;
+        [self resultUpdated: decemial];
+    }
+}
+
+
 - (double)getDecemialDisplayValue {
     return  [self toDecemial:  self.delegate.displayValue].doubleValue;
 }
@@ -136,7 +147,6 @@ static NSString * const equals =@"=";
 #pragma mark - Actions
 
 - (void)operationTaped:(NSString *)operation {
-    
     //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
     if (!isnan(self.firstOperand) && !self.isDigitEnteringEnterupted && !self.isEquailsWasTaped){
         [self equalsTaped];
@@ -155,54 +165,49 @@ static NSString * const equals =@"=";
 
 
 - (void)equalsTaped {
-    
     //SET second operand - IF digit entering enterupted OR second operator is not entered;
     if (!self.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
         self.secondOperand = [self getDecemialDisplayValue];;
     }
-    
+    //calculating operation
     [self executeOperation: self.operator];
-    
     //result is first operand now;
     self.firstOperand = [self getDecemialDisplayValue];;
 }
 
 
 -(void)digitTaped: (NSString *)digit {
-    
     //IF digit entering was interrupted or on display zero THAN start entering new display value
     if (([self.delegate.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)){
-    
+    //reset value for new input
         self.delegate.displayValue=@"";
         self.digitEnteringEnterupted = NO;
     }
+    //add new taped digit
     self.delegate.displayValue = [self.delegate.displayValue stringByAppendingFormat:@"%@", digit];
-    
 }
 
+-(void)resultUpdated:(NSString *)resultOfOperation{
+    self.delegate.displayValue = [self fromDecemial: resultOfOperation.floatValue];
+}
 
 #pragma mark - Operations
 
 - (void)executeOperation: (NSString *)operation {
-    
     SEL operationMethodName = NSSelectorFromString([self.mapOfOperations valueForKey:operation]);
-    
     if ([self respondsToSelector:operationMethodName]) {
-        
         //marking that the input of the digits was interrupted
         self.digitEnteringEnterupted = YES;
         self.equailsWasTaped = YES;
-        
+        //operation method call
         [self performSelector:operationMethodName];
-        [self.delegate resultUpdated: [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]]];
-        
+        [self resultUpdated: [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]]];
         //if result is error value than clear calculator model, and set setDigitEnteringEnterupted to reset displayLabel;
         if (isnan(self.result) || self.result == INFINITY){
             self.delegate.displayValue = [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]];
             [self clear];
         }
     }
-    
 }
 
 -(void)clear {

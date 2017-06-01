@@ -14,22 +14,20 @@
 
 @property (nonatomic, retain) NSString *displayValue;
 
-- (void)resultUpdated: (NSString *)resultOfOperation;
-
 @end
 
 
 @interface Calculator : NSObject
 
 @property (nonatomic, assign) id <CalculatorDelegate> delegate;
-@property (nonatomic, assign) int radix;
 
 - (NSString*)toDecemial: (NSString *) displayLabel;
 - (NSString*)fromDecemial: (double) operand;
-- (void)executeOperation: (NSString *) operation;
 - (void)equalsTaped;
+- (void)executeOperation: (NSString *) operation;
 - (void)operationTaped: (NSString *)operation;
 - (void)digitTaped: (NSString *)digit;
+- (void)updatingRadix: (int) radix;
 
 
 @end
