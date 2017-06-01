@@ -13,28 +13,23 @@
 @protocol CalculatorDelegate <NSObject>
 
 @property (nonatomic, retain) NSString *displayValue;
-@property (nonatomic, assign, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
-@property (nonatomic, assign, getter=isEquailsWasTaped) BOOL equailsWasTaped;
 
--(void)resultUpdated: (NSString *)resultOfOperation;
+- (void)resultUpdated: (NSString *)resultOfOperation;
 
 @end
 
 
 @interface Calculator : NSObject
 
-@property (nonatomic, retain) NSString *operator;
-@property (nonatomic, assign) double firstOperand;
-@property (nonatomic, assign) double secondOperand;
-@property (nonatomic, assign) double unaryOperand;
-@property (nonatomic, assign) int radix;
 @property (nonatomic, assign) id <CalculatorDelegate> delegate;
+@property (nonatomic, assign) int radix;
 
-
-- (void)executeOperation:(NSString *) operation;
 - (NSString*)toDecemial: (NSString *) displayLabel;
 - (NSString*)fromDecemial: (double) operand;
+- (void)executeOperation: (NSString *) operation;
 - (void)equalsTaped;
-- (void)operationTaped:(NSString *)operation;
+- (void)operationTaped: (NSString *)operation;
+- (void)digitTaped: (NSString *)digit;
+
 
 @end

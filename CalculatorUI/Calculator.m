@@ -13,13 +13,23 @@
 @interface Calculator ()
 
 @property (nonatomic, retain) NSDictionary *mapOfOperations;
-@property (nonatomic, retain) NSString *errorMessage;
 @property (nonatomic, assign) double result;
+@property (nonatomic, assign) double firstOperand;
+@property (nonatomic, assign) double secondOperand;
+@property (nonatomic, retain) NSString *operator;
+@property (nonatomic, assign, getter=isEquailsWasTaped) BOOL equailsWasTaped;
+@property (nonatomic, assign, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
 
 @end
 
 @implementation Calculator
 
+static NSString *const errorMessageNan = @"ОШИБКА";
+static NSString *const errorMessageInf = @"Не определено";
+static int const defaultRadix = 10;
+static int const maximumSignificantDigits = 7;
+//operations
+static NSString *const zeroCharacher = @"0";
 static NSString * const plus = @"+";
 static NSString * const minus = @"-";
 static NSString * const multiply =@"*";
@@ -44,16 +54,14 @@ static NSString * const equals =@"=";
         [_mapOfOperations retain];
         _firstOperand = NAN;
         _secondOperand = NAN;
-        _radix = 10;
+        _radix = defaultRadix;
     }
-    
     return self;
 }
 
 - (void)dealloc{
     [_operator release];
     [_mapOfOperations release];
-    [_errorMessage release];
     [super dealloc];
 }
 
@@ -64,35 +72,36 @@ static NSString * const equals =@"=";
         if (!_numberFormatter) {
             _numberFormatter = [NSNumberFormatter new];
             _numberFormatter.usesSignificantDigits = YES;
-            _numberFormatter.maximumSignificantDigits = 7;
-            _numberFormatter.notANumberSymbol = @"ОШИБКА";
-            _numberFormatter.negativeInfinitySymbol=@"Не определено";
-            _numberFormatter.positiveInfinitySymbol=@"Не определено";
-            
+            _numberFormatter.maximumSignificantDigits = maximumSignificantDigits;
+            _numberFormatter.notANumberSymbol = errorMessageNan;
+            _numberFormatter.negativeInfinitySymbol=errorMessageInf;
+            _numberFormatter.positiveInfinitySymbol=errorMessageInf;
         }
     }
-    
     return _numberFormatter;
 }
 
+#pragma mark - Scale of notation
 
 -(NSString *)toDecemial:(NSString *)displayLabel {
     
     //check if now in decimal than just return current value
-    return ((self.radix = 10)  ? displayLabel : [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)]) ;
+    if (self.radix == 10){
+        return  displayLabel;
+    } else {
+        return [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)];
+    }
 }
 
 
 
 -(NSString *)fromDecemial:(double)operand {
     
-    NSString *returnValue = @"0";
-    
-    
+    NSString *returnValue = zeroCharacher;
     switch (self.radix) {
         case 2:
             
-        //from decimal to binary
+            //from decimal to binary
         {
             NSString *newDec = [NSString stringWithFormat:@"%g", operand];
             NSUInteger x = [newDec integerValue];
@@ -101,9 +110,9 @@ static NSString * const equals =@"=";
                 returnValue = [[NSString stringWithFormat:@"%lu", x&1] stringByAppendingString:returnValue];
                 x = x>> 1;
                 ++i;
-        }
-            break;
             }
+            break;
+        }
         case 8:
             returnValue = [NSString stringWithFormat: @"%o", (int) operand];
             break;
@@ -111,73 +120,90 @@ static NSString * const equals =@"=";
             returnValue = [NSString stringWithFormat:@"%g", operand];
             break;
         case 16:
-           returnValue = [NSString stringWithFormat: @"%X", (int) operand];
+            returnValue = [NSString stringWithFormat: @"%X", (int) operand];
             break;
         default:
             break;
     }
-    
     return returnValue;
-   
 }
+
+- (double)getDecemialDisplayValue {
+    return  [self toDecemial:  self.delegate.displayValue].doubleValue;
+}
+
+
+#pragma mark - Actions
+
+- (void)operationTaped:(NSString *)operation {
+    
+    //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
+    if (!isnan(self.firstOperand) && !self.isDigitEnteringEnterupted && !self.isEquailsWasTaped){
+        [self equalsTaped];
+    } else {
+        //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
+        self.firstOperand = [self getDecemialDisplayValue];
+    }
+    
+    //take current operator.
+    self.operator = operation;
+    //marking that the input of the digits was interrupted
+    self.digitEnteringEnterupted = YES;
+    //restore equailsWasTaped after changes in [self equalsTaped:self];
+    self.equailsWasTaped = NO;
+}
+
+
+- (void)equalsTaped {
+    
+    //SET second operand - IF digit entering enterupted OR second operator is not entered;
+    if (!self.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
+        self.secondOperand = [self getDecemialDisplayValue];;
+    }
+    
+    [self executeOperation: self.operator];
+    
+    //result is first operand now;
+    self.firstOperand = [self getDecemialDisplayValue];;
+}
+
+
+-(void)digitTaped: (NSString *)digit {
+    
+    //IF digit entering was interrupted or on display zero THAN start entering new display value
+    if (([self.delegate.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)){
+    
+        self.delegate.displayValue=@"";
+        self.digitEnteringEnterupted = NO;
+    }
+    self.delegate.displayValue = [self.delegate.displayValue stringByAppendingFormat:@"%@", digit];
+    
+}
+
 
 #pragma mark - Operations
 
-- (void)executeOperation:(NSString *)operation {
-
+- (void)executeOperation: (NSString *)operation {
+    
     SEL operationMethodName = NSSelectorFromString([self.mapOfOperations valueForKey:operation]);
-
+    
     if ([self respondsToSelector:operationMethodName]) {
+        
+        //marking that the input of the digits was interrupted
+        self.digitEnteringEnterupted = YES;
+        self.equailsWasTaped = YES;
         
         [self performSelector:operationMethodName];
         [self.delegate resultUpdated: [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]]];
         
         //if result is error value than clear calculator model, and set setDigitEnteringEnterupted to reset displayLabel;
         if (isnan(self.result) || self.result == INFINITY){
+            self.delegate.displayValue = [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]];
             [self clear];
         }
     }
     
-    //marking that the input of the digits was interrupted
-    self.delegate.digitEnteringEnterupted = YES;
-    self.delegate.equailsWasTaped = YES;
 }
-
-
-- (void)operationTaped:(NSString *)operation {
-    
-    //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
-    if (!isnan(self.firstOperand) && !self.delegate.isDigitEnteringEnterupted && !self.delegate.isEquailsWasTaped){
-        [self equalsTaped];
-    } else {
-        //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
-        self.firstOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-    }
-    
-    //take current operator.
-    self.operator = operation;
-    //marking that the input of the digits was interrupted
-    self.delegate.digitEnteringEnterupted = YES;
-    //restore equailsWasTaped after changes in [self equalsTaped:self];
-    self.delegate.equailsWasTaped = NO;
-}
-
-
-- (void)equalsTaped {
-
-    //SET second operand - IF digit entering enterupted OR second operator is not entered;
-    if (!self.delegate.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
-        self.secondOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-    }
-    
-    [self executeOperation: self.operator];
-
-    //result is first operand now;
-    self.firstOperand = [self toDecemial:  self.delegate.displayValue].doubleValue;
-}
-
-
-
 
 -(void)clear {
     self.firstOperand = NAN;
@@ -186,41 +212,34 @@ static NSString * const equals =@"=";
     self.result = 0;
 }
 
-
 -(void)add {
     self.result = self.firstOperand + self.secondOperand;
 }
-
 
 -(void)sub {
     self.result = self.firstOperand - self.secondOperand;
 }
 
-
 -(void)mul {
     self.result = self.firstOperand * self.secondOperand;
 }
 
-
 -(void)div {
-        self.result = self.firstOperand / self.secondOperand;
+    self.result = self.firstOperand / self.secondOperand;
 }
-
 
 -(void)сhangeSymbol {
+    self.result = 0 - [self getDecemialDisplayValue];
     //set that digit entering in not interrupted and user can continue entering digit after change symbol;
-    [self.delegate setDigitEnteringEnterupted: NO];
-    self.result = 0 - self.unaryOperand;
+    self.digitEnteringEnterupted = NO;
 }
-
 
 -(void)getPrecent {
-    self.result = [self toDecemial:  self.delegate.displayValue].doubleValue / 100;
+    self.result = [self getDecemialDisplayValue] / 100;
 }
 
-
--(void)getSquareRoot{
-        self.result = sqrt([self toDecemial:  self.delegate.displayValue].doubleValue);
+-(void)getSquareRoot {
+    self.result = sqrt([self getDecemialDisplayValue]);
 }
 
 @end
