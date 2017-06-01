@@ -21,13 +21,13 @@
 
 @property (nonatomic, assign) id <CalculatorDelegate> delegate;
 
-- (NSString*)toDecemial: (NSString *) displayLabel;
-- (NSString*)fromDecemial: (double) operand;
+- (NSString*)toDecemial:(NSString *) displayLabel;
+- (NSString*)fromDecemial:(double) operand;
 - (void)equalsTaped;
-- (void)executeOperation: (NSString *) operation;
-- (void)operationTaped: (NSString *)operation;
-- (void)digitTaped: (NSString *)digit;
-- (void)updatingRadix: (int) radix;
+- (void)executeOperation:(NSString *) operation;
+- (void)operationTaped:(NSString *)operation;
+- (void)digitTaped:(NSString *)digit;
+- (void)updatingRadix:(int) radix;
 
 
 @end

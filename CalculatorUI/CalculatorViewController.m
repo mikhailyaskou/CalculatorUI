@@ -35,7 +35,7 @@ static int const defaultRadix = 10;
 @synthesize displayValue = _displayValue;
 
 
--(void)setDisplayValue:(NSString *)displayValue {
+- (void)setDisplayValue:(NSString *)displayValue {
     
     if (_displayValue!=displayValue) {
         [_displayValue release];
@@ -45,7 +45,7 @@ static int const defaultRadix = 10;
 }
 
 
--(NSString *)displayValue {
+- (NSString *)displayValue {
     return  self.resultLabel.text;
 }
 
@@ -86,11 +86,10 @@ static int const defaultRadix = 10;
 
 
 - (void)deleteLastDigit {
-    self.displayValue = (self.displayValue.length > 1) ? [self.displayValue substringToIndex: self.displayValue.length -1] : zeroCharacher;
+    self.displayValue = (self.displayValue.length > 1) ? [self.displayValue substringToIndex:self.displayValue.length -1] : zeroCharacher;
 }
 
 - (IBAction)dotTaped:(id)sender {
-    
     NSRange range = [self.displayValue rangeOfString:dotCharachter];
     if (range.location == NSNotFound) {
         self.displayValue = [self.displayValue stringByAppendingString:dotCharachter];
@@ -132,7 +131,7 @@ static int const defaultRadix = 10;
     [self updateRadixAdndInterface:sender.currentTitle.intValue];
 }
 
-- (void)updateRadixAdndInterface:(int) radix{
+- (void)updateRadixAdndInterface:(int) radix {
     //update value
     [self.calculatorModel updatingRadix: radix];
     //update interface
@@ -152,7 +151,6 @@ static int const defaultRadix = 10;
 
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id< UIViewControllerTransitionCoordinator>)coordinator {
-
     //redrow interface for current orientaion
     [self updateInterfaceWhenOrientationChanged];
     //reset radix to decemial
@@ -160,7 +158,6 @@ static int const defaultRadix = 10;
 }
 
 - (void)updateInterfaceWhenOrientationChanged {
-    
         UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
         BOOL radixDisableFlag;
         int indexStackView;
@@ -177,8 +174,8 @@ static int const defaultRadix = 10;
         for (UIButton *button in self.disabledButtonsInLandscapeMode) {
             button.enabled = radixDisableFlag;
         }
-        [self.mainStackView removeArrangedSubview: self.operationStackView];
-        [self.mainStackView insertArrangedSubview: self.operationStackView atIndex:indexStackView];
+        [self.mainStackView removeArrangedSubview:self.operationStackView];
+        [self.mainStackView insertArrangedSubview:self.operationStackView atIndex:indexStackView];
 }
 
 

@@ -60,7 +60,7 @@ static NSString * const equals =@"=";
     return self;
 }
 
-- (void)dealloc{
+- (void)dealloc {
     [_operator release];
     [_mapOfOperations release];
     [super dealloc];
@@ -114,13 +114,13 @@ static NSString * const equals =@"=";
             break;
         }
         case 8:
-            returnValue = [NSString stringWithFormat: @"%o", (int) operand];
+            returnValue = [NSString stringWithFormat:@"%o", (int) operand];
             break;
         case 10:
             returnValue = [NSString stringWithFormat:@"%g", operand];
             break;
         case 16:
-            returnValue = [NSString stringWithFormat: @"%X", (int) operand];
+            returnValue = [NSString stringWithFormat:@"%X", (int) operand];
             break;
         default:
             break;
@@ -132,15 +132,15 @@ static NSString * const equals =@"=";
 - (void)updatingRadix:(int) radix{
     
     if (self.radix !=radix){
-        NSString *decemial = [self toDecemial:  self.delegate.displayValue];
+        NSString *decemial = [self toDecemial:self.delegate.displayValue];
         self.radix = radix;
-        [self resultUpdated: decemial];
+        [self resultUpdated:decemial];
     }
 }
 
 
 - (double)getDecemialDisplayValue {
-    return  [self toDecemial:  self.delegate.displayValue].doubleValue;
+    return  [self toDecemial:self.delegate.displayValue].doubleValue;
 }
 
 
@@ -170,15 +170,15 @@ static NSString * const equals =@"=";
         self.secondOperand = [self getDecemialDisplayValue];;
     }
     //calculating operation
-    [self executeOperation: self.operator];
+    [self executeOperation:self.operator];
     //result is first operand now;
     self.firstOperand = [self getDecemialDisplayValue];;
 }
 
 
--(void)digitTaped: (NSString *)digit {
+- (void)digitTaped:(NSString *)digit {
     //IF digit entering was interrupted or on display zero THAN start entering new display value
-    if (([self.delegate.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)){
+    if (([self.delegate.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)) {
     //reset value for new input
         self.delegate.displayValue=@"";
         self.digitEnteringEnterupted = NO;
@@ -187,13 +187,13 @@ static NSString * const equals =@"=";
     self.delegate.displayValue = [self.delegate.displayValue stringByAppendingFormat:@"%@", digit];
 }
 
--(void)resultUpdated:(NSString *)resultOfOperation{
+- (void)resultUpdated:(NSString *)resultOfOperation {
     self.delegate.displayValue = [self fromDecemial: resultOfOperation.floatValue];
 }
 
 #pragma mark - Operations
 
-- (void)executeOperation: (NSString *)operation {
+- (void)executeOperation:(NSString *)operation {
     SEL operationMethodName = NSSelectorFromString([self.mapOfOperations valueForKey:operation]);
     if ([self respondsToSelector:operationMethodName]) {
         //marking that the input of the digits was interrupted
@@ -201,49 +201,49 @@ static NSString * const equals =@"=";
         self.equailsWasTaped = YES;
         //operation method call
         [self performSelector:operationMethodName];
-        [self resultUpdated: [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]]];
+        [self resultUpdated: [Calculator.numberFormatter stringFromNumber:[NSNumber numberWithDouble:self.result]]];
         //if result is error value than clear calculator model, and set setDigitEnteringEnterupted to reset displayLabel;
         if (isnan(self.result) || self.result == INFINITY){
-            self.delegate.displayValue = [Calculator.numberFormatter stringFromNumber: [NSNumber numberWithDouble:self.result]];
+            self.delegate.displayValue = [Calculator.numberFormatter stringFromNumber:[NSNumber numberWithDouble:self.result]];
             [self clear];
         }
     }
 }
 
--(void)clear {
+- (void)clear {
     self.firstOperand = NAN;
     self.secondOperand = NAN;
     self.operator = nil;
     self.result = 0;
 }
 
--(void)add {
+- (void)add {
     self.result = self.firstOperand + self.secondOperand;
 }
 
--(void)sub {
+- (void)sub {
     self.result = self.firstOperand - self.secondOperand;
 }
 
--(void)mul {
+- (void)mul {
     self.result = self.firstOperand * self.secondOperand;
 }
 
--(void)div {
+- (void)div {
     self.result = self.firstOperand / self.secondOperand;
 }
 
--(void)сhangeSymbol {
+- (void)сhangeSymbol {
     self.result = 0 - [self getDecemialDisplayValue];
     //set that digit entering in not interrupted and user can continue entering digit after change symbol;
     self.digitEnteringEnterupted = NO;
 }
 
--(void)getPrecent {
+- (void)getPrecent {
     self.result = [self getDecemialDisplayValue] / 100;
 }
 
--(void)getSquareRoot {
+- (void)getSquareRoot {
     self.result = sqrt([self getDecemialDisplayValue]);
 }
 
