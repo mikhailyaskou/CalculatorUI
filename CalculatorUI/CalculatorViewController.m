@@ -9,6 +9,12 @@
 #import "CalculatorViewController.h"
 #import "AboutUsViewController.h"
 
+static NSString *const zeroCharacher = @"0";
+static NSString *const decimalSymbol = @".";
+static int interfaceOrientationPortrait = 1;
+static int indexStackViewPortraitPosition = 3;
+static int indexStackViewLandscapePosition = 0;
+static int const defaultRadix = 10;
 
 @interface CalculatorViewController ()
 
@@ -19,18 +25,13 @@
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allDigits;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allRadixButton;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *disabledButtonsInLandscapeMode;
-@property (retain, nonatomic) NSString *decimalSymbol;
+
 
 @end
 
 
 @implementation CalculatorViewController
 
-static NSString *const zeroCharacher = @"0";
-static int interfaceOrientationPortrait = 1;
-static int indexStackViewPortraitPosition = 3;
-static int indexStackViewLandscapePosition = 0;
-static int const defaultRadix = 10;
 
 @synthesize displayValue = _displayValue;
 
@@ -77,9 +78,6 @@ static int const defaultRadix = 10;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
     [self updateRadixAdndInterface: defaultRadix];
-    
-    NSNumberFormatter *formatter = [[[NSNumberFormatter alloc] init] autorelease];
-    self.decimalSymbol = [formatter decimalSeparator];
 }
 
 
@@ -93,9 +91,9 @@ static int const defaultRadix = 10;
 }
 
 - (IBAction)dotTaped:(id)sender {
-    NSRange range = [self.displayValue rangeOfString:self.decimalSymbol];
+    NSRange range = [self.displayValue rangeOfString:decimalSymbol];
     if (range.location == NSNotFound) {
-        self.displayValue = [self.displayValue stringByAppendingString:self.decimalSymbol];
+        self.displayValue = [self.displayValue stringByAppendingString:decimalSymbol];
     }
 }
 
@@ -141,14 +139,14 @@ static int const defaultRadix = 10;
     for (UIButton *button in self.allDigits) {
         if (button.tag >= radix){
             button.enabled = NO;
-        } else {
+        }
+        else {
             button.enabled = YES;
         }
     }
 }
 
 - (IBAction)aboutTaped:(id)sender {
-    
     [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
 }
 
@@ -167,7 +165,8 @@ static int const defaultRadix = 10;
         if (interfaceOrientation == interfaceOrientationPortrait){
             radixDisableFlag = YES;
             indexStackView = indexStackViewPortraitPosition;
-        } else {
+        }
+        else {
             indexStackView = indexStackViewLandscapePosition;
             radixDisableFlag = NO;
         }

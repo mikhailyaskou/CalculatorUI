@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xtR-jc-DeB">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -37,29 +37,29 @@
                         <viewControllerLayoutGuide type="bottom" id="3cM-3y-5T1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G82-d6-PZv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YnZ-2b-SR2">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="513"/>
                                 <subviews>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6q-aG-Xq1">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="mAo-hZ-kcb"/>
+                                            <constraint firstAttribute="height" constant="60" id="X6d-2C-dtb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="50"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YRX-aI-myA">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="557"/>
+                                        <rect key="frame" x="0.0" y="60" width="320" height="453"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GTR-eQ-wbn">
-                                                <rect key="frame" x="0.0" y="0.0" width="92.5" height="557"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="453"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLC-hM-56t">
-                                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="8">
@@ -70,7 +70,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZG-ZH-Mat">
-                                                        <rect key="frame" x="0.0" y="70" width="92.5" height="68.5"/>
+                                                        <rect key="frame" x="0.0" y="57" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="AC">
@@ -81,7 +81,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="13" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYR-Xl-yNI">
-                                                        <rect key="frame" x="0.0" y="140.5" width="92.5" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="114" width="78.5" height="54"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="D">
@@ -95,7 +95,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="10" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDi-6z-wvA">
-                                                        <rect key="frame" x="0.0" y="210" width="92.5" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="170" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="A">
@@ -109,7 +109,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwV-c5-RNM">
-                                                        <rect key="frame" x="0.0" y="279.5" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="227" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="7">
@@ -123,7 +123,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdi-a8-Y9l">
-                                                        <rect key="frame" x="0.0" y="349.5" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="284" width="78.5" height="55.5"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="4">
@@ -137,7 +137,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oth-KO-Zgq">
-                                                        <rect key="frame" x="0.0" y="419.5" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="341.5" width="78.5" height="54.5"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="1">
@@ -151,7 +151,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQD-ol-Js3">
-                                                        <rect key="frame" x="0.0" y="489.5" width="92.5" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="398" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="0">
@@ -176,10 +176,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZhV-89-nFX">
-                                                <rect key="frame" x="94.5" y="0.0" width="92" height="557"/>
+                                                <rect key="frame" x="80.5" y="0.0" width="78.5" height="453"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCT-N0-rPB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="10">
@@ -190,7 +190,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKj-w7-evA">
-                                                        <rect key="frame" x="0.0" y="70" width="92" height="68.5"/>
+                                                        <rect key="frame" x="0.0" y="57" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="+/-">
@@ -204,7 +204,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="14" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpO-K5-WeN">
-                                                        <rect key="frame" x="0.0" y="140.5" width="92" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="114" width="78.5" height="54"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="E">
@@ -218,7 +218,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="11" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LD-zZ-MmS">
-                                                        <rect key="frame" x="0.0" y="210" width="92" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="170" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="B">
@@ -232,7 +232,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flS-do-05r">
-                                                        <rect key="frame" x="0.0" y="279.5" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="227" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="8">
@@ -246,7 +246,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWa-y6-giz">
-                                                        <rect key="frame" x="0.0" y="349.5" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="284" width="78.5" height="55.5"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="5">
@@ -260,7 +260,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6Z-6H-ep3">
-                                                        <rect key="frame" x="0.0" y="419.5" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="341.5" width="78.5" height="54.5"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="2">
@@ -274,7 +274,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0CP-Qu-2sP">
-                                                        <rect key="frame" x="0.0" y="489.5" width="92" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="398" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title=".">
@@ -299,10 +299,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="RgN-Gk-oq5">
-                                                <rect key="frame" x="188.5" y="0.0" width="92.5" height="557"/>
+                                                <rect key="frame" x="161" y="0.0" width="78.5" height="453"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-gM-3lm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="16">
@@ -313,7 +313,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-wW-2sY">
-                                                        <rect key="frame" x="0.0" y="70" width="92.5" height="68.5"/>
+                                                        <rect key="frame" x="0.0" y="57" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="%">
@@ -327,7 +327,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="15" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgf-nn-8ID">
-                                                        <rect key="frame" x="0.0" y="140.5" width="92.5" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="114" width="78.5" height="54"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="F">
@@ -341,7 +341,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="12" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gs9-Vf-xT8">
-                                                        <rect key="frame" x="0.0" y="210" width="92.5" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="170" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="C">
@@ -355,7 +355,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sum-LI-xL4">
-                                                        <rect key="frame" x="0.0" y="279.5" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="227" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="9">
@@ -369,7 +369,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="huh-q0-JcP">
-                                                        <rect key="frame" x="0.0" y="349.5" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="284" width="78.5" height="55.5"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="6">
@@ -383,7 +383,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTT-xK-C0E">
-                                                        <rect key="frame" x="0.0" y="419.5" width="92.5" height="68"/>
+                                                        <rect key="frame" x="0.0" y="341.5" width="78.5" height="54.5"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="3">
@@ -397,7 +397,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jhr-cx-hhA">
-                                                        <rect key="frame" x="0.0" y="489.5" width="92.5" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="398" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="√">
@@ -422,10 +422,10 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qKB-vi-W7Y">
-                                                <rect key="frame" x="283" y="0.0" width="92" height="557"/>
+                                                <rect key="frame" x="241.5" y="0.0" width="78.5" height="453"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOa-9P-P3p">
-                                                        <rect key="frame" x="0.0" y="0.0" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="2">
@@ -436,7 +436,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P6-ji-GfW">
-                                                        <rect key="frame" x="0.0" y="70" width="92" height="68.5"/>
+                                                        <rect key="frame" x="0.0" y="57" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="→">
@@ -447,7 +447,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAZ-AL-2VP">
-                                                        <rect key="frame" x="0.0" y="140.5" width="92" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="114" width="78.5" height="54"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="/">
@@ -458,7 +458,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuu-GS-F3T">
-                                                        <rect key="frame" x="0.0" y="210" width="92" height="67.5"/>
+                                                        <rect key="frame" x="0.0" y="170" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="*">
@@ -469,7 +469,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoE-6C-yph">
-                                                        <rect key="frame" x="0.0" y="279.5" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="227" width="78.5" height="55.5"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="-">
@@ -480,7 +480,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZb-3U-zaQ">
-                                                        <rect key="frame" x="0.0" y="349.5" width="92" height="68"/>
+                                                        <rect key="frame" x="0.0" y="284.5" width="78.5" height="55"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="+">
@@ -491,7 +491,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ea-t3-z0a">
-                                                        <rect key="frame" x="0.0" y="419.5" width="92" height="137.5"/>
+                                                        <rect key="frame" x="0.0" y="341.5" width="78.5" height="111.5"/>
                                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="30"/>
                                                         <state key="normal" title="=">
@@ -519,20 +519,28 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="i6q-aG-Xq1" firstAttribute="top" secondItem="YnZ-2b-SR2" secondAttribute="top" id="50X-AC-Ivw"/>
+                                    <constraint firstItem="YRX-aI-myA" firstAttribute="top" secondItem="i6q-aG-Xq1" secondAttribute="bottom" id="GDB-A6-KGH"/>
+                                    <constraint firstItem="i6q-aG-Xq1" firstAttribute="leading" secondItem="YnZ-2b-SR2" secondAttribute="leading" id="Q90-NL-PCW"/>
+                                    <constraint firstAttribute="trailing" secondItem="i6q-aG-Xq1" secondAttribute="trailing" id="S8M-GR-SYB"/>
+                                    <constraint firstItem="i6q-aG-Xq1" firstAttribute="top" secondItem="YnZ-2b-SR2" secondAttribute="top" id="YCh-F7-3RL"/>
+                                    <constraint firstItem="YRX-aI-myA" firstAttribute="top" secondItem="i6q-aG-Xq1" secondAttribute="bottom" id="mxA-un-DbC"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="YnZ-2b-SR2" secondAttribute="trailing" id="0ks-WS-lP8"/>
-                            <constraint firstAttribute="bottom" secondItem="YnZ-2b-SR2" secondAttribute="bottom" id="DwX-tN-ZfJ"/>
-                            <constraint firstItem="YnZ-2b-SR2" firstAttribute="top" secondItem="G82-d6-PZv" secondAttribute="top" constant="60" id="SEt-Ey-6tK"/>
-                            <constraint firstItem="YnZ-2b-SR2" firstAttribute="leading" secondItem="G82-d6-PZv" secondAttribute="leading" id="pOJ-jC-Tdw"/>
+                            <constraint firstItem="YnZ-2b-SR2" firstAttribute="top" secondItem="G82-d6-PZv" secondAttribute="top" constant="55" id="W5y-1M-185"/>
+                            <constraint firstItem="YnZ-2b-SR2" firstAttribute="leading" secondItem="G82-d6-PZv" secondAttribute="leading" id="XHD-Wc-O4A"/>
+                            <constraint firstItem="3cM-3y-5T1" firstAttribute="top" secondItem="YnZ-2b-SR2" secondAttribute="bottom" id="kdD-Er-fnC"/>
+                            <constraint firstAttribute="trailing" secondItem="YnZ-2b-SR2" secondAttribute="trailing" id="y13-DE-o6V"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="I04-vf-6gE">
-                        <barButtonItem key="rightBarButtonItem" title="About" id="YAK-fA-0sw">
+                    <navigationItem key="navigationItem" id="BBz-q0-DjJ">
+                        <barButtonItem key="rightBarButtonItem" title="About" id="PYn-bU-cme">
                             <connections>
-                                <action selector="aboutTaped:" destination="Xdi-ou-1Ai" id="2Bh-tW-Orh"/>
+                                <action selector="aboutTaped:" destination="Xdi-ou-1Ai" id="d4n-4e-npe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

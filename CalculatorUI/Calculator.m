@@ -9,6 +9,30 @@
 #import "Calculator.h"
 #import "FormatterForCalculator.h"
 
+static NSString *const errorMessageNan = @"ОШИБКА";
+static NSString *const errorMessageInf = @"Не определено";
+static int const defaultRadix = 10;
+static int const maximumSignificantDigits = 7;
+//operations
+static NSString *const zeroCharacher = @"0";
+static NSString * const plus = @"+";
+static NSString * const minus = @"-";
+static NSString * const multiply =@"*";
+static NSString * const divide =@"/";
+static NSString * const changeSymbol =@"+/-";
+static NSString * const precent =@"%";
+static NSString * const squarRoot =@"√";
+static NSString * const clear =@"AC";
+//method names
+static NSString * const plusMethodNames = @"add";
+static NSString * const minusMethodNames = @"sub";
+static NSString * const multiplyMethodNames =@"mul";
+static NSString * const divideMethodNames =@"div";
+static NSString * const changeSymbolMethodNames =@"сhangeSymbol";
+static NSString * const precentMethodNames =@"getPrecent";
+static NSString * const squarRootMethodNames =@"getSquareRoot";
+static NSString * const clearMethodNames =@"clear";
+
 
 @interface Calculator ()
 
@@ -25,33 +49,16 @@
 
 @implementation Calculator
 
-static NSString *const errorMessageNan = @"ОШИБКА";
-static NSString *const errorMessageInf = @"Не определено";
-static int const defaultRadix = 10;
-static int const maximumSignificantDigits = 7;
-//operations
-static NSString *const zeroCharacher = @"0";
-static NSString * const plus = @"+";
-static NSString * const minus = @"-";
-static NSString * const multiply =@"*";
-static NSString * const divide =@"/";
-static NSString * const changeSymbol =@"+/-";
-static NSString * const precent =@"%";
-static NSString * const squarRoot =@"√";
-static NSString * const clear =@"AC";
-static NSString * const equals =@"=";
-
 - (id)init {
     if (self = [super init]) {
-        _mapOfOperations = @{plus:@"add",
-                             minus:@"sub",
-                             multiply:@"mul",
-                             divide:@"div",
-                             changeSymbol:@"сhangeSymbol",
-                             precent:@"getPrecent",
-                             squarRoot:@"getSquareRoot",
-                             clear:@"clear",
-                             equals:@"equals",};
+        _mapOfOperations = @{plus       : plusMethodNames,
+                             minus      : minusMethodNames,
+                             multiply   : multiplyMethodNames,
+                             divide     : divideMethodNames,
+                             changeSymbol: changeSymbolMethodNames,
+                             precent    : precentMethodNames,
+                             squarRoot  : squarRootMethodNames,
+                             clear      : clearMethodNames};
         [_mapOfOperations retain];
         _firstOperand = NAN;
         _secondOperand = NAN;
@@ -72,6 +79,9 @@ static NSString * const equals =@"=";
     @synchronized(self) {
         if (!_numberFormatter) {
             _numberFormatter = [NSNumberFormatter new];
+            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+            [_numberFormatter setLocale:locale];
+            [locale release];
             _numberFormatter.usesSignificantDigits = YES;
             _numberFormatter.maximumSignificantDigits = maximumSignificantDigits;
             _numberFormatter.notANumberSymbol = errorMessageNan;
@@ -89,7 +99,8 @@ static NSString * const equals =@"=";
     //check if now in decimal than just return current value
     if (self.radix == 10) {
         return  displayLabel;
-    } else {
+    }
+    else {
         return [NSString stringWithFormat:@"%ld", strtol([displayLabel UTF8String], NULL, self.radix)];
     }
 }
@@ -98,18 +109,15 @@ static NSString * const equals =@"=";
 
 -(NSString *)fromDecemial:(double)operand {
     
-    NSString *returnValue = zeroCharacher;
+    NSString *returnValue = @"";
     switch (self.radix) {
         case 2:
-            //from decimal to binary
         {
-            NSString *newDec = [NSString stringWithFormat:@"%g", operand];
-            NSUInteger x = [newDec integerValue];
-            int i = 0;
-            while (x > 0) {
-                returnValue = [[NSString stringWithFormat:@"%lu", x&1] stringByAppendingString:returnValue];
-                x = x>> 1;
-                ++i;
+            //from decimal to binary
+            NSUInteger x = operand;
+            while (x>0) {
+                returnValue = [[NSString stringWithFormat: @"%lu", x&1] stringByAppendingString:returnValue];
+                x = x >> 1;
             }
             break;
         }
@@ -150,11 +158,11 @@ static NSString * const equals =@"=";
     //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
     if (!isnan(self.firstOperand) && !self.isDigitEnteringEnterupted && !self.isEquailsWasTaped){
         [self equalsTaped];
-    } else {
+    }
+    else {
         //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
         self.firstOperand = [self getDecemialDisplayValue];
     }
-    
     //take current operator.
     self.operator = operation;
     //marking that the input of the digits was interrupted
