@@ -9,12 +9,12 @@
 #import "CalculatorViewController.h"
 #import "AboutUsViewController.h"
 
-static NSString *const zeroCharacher = @"0";
-static NSString *const decimalSymbol = @".";
-static int interfaceOrientationPortrait = 1;
-static int indexStackViewPortraitPosition = 3;
-static int indexStackViewLandscapePosition = 0;
-static int const defaultRadix = 10;
+static NSString *const YMACalculatorViewControllerZeroCharacher = @"0";
+static NSString *const YMACalculatorViewControllerDecimalSymbol = @".";
+static int YMACalculatorViewControllerInterfaceOrientationPortrait = 1;
+static int YMACalculatorViewControllerIndexStackViewPortraitPosition = 3;
+static int YMACalculatorViewControllerIndexStackViewLandscapePosition = 0;
+static int const YMACalculatorViewControllerDefaultRadix = 10;
 
 @interface CalculatorViewController ()
 
@@ -77,7 +77,7 @@ static int const defaultRadix = 10;
     //drow interface depending on the orientation;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
-    [self updateRadixAdndInterface: defaultRadix];
+    [self updateRadixAdndInterface: YMACalculatorViewControllerDefaultRadix];
 }
 
 
@@ -87,13 +87,14 @@ static int const defaultRadix = 10;
 
 
 - (void)deleteLastDigit {
-    self.displayValue = (self.displayValue.length > 1) ? [self.displayValue substringToIndex:self.displayValue.length -1] : zeroCharacher;
+    //this method uses twice - when button pressed, and with swipe
+    self.displayValue = (self.displayValue.length > 1) ? [self.displayValue substringToIndex:self.displayValue.length -1] : YMACalculatorViewControllerZeroCharacher;
 }
 
 - (IBAction)dotTaped:(id)sender {
-    NSRange range = [self.displayValue rangeOfString:decimalSymbol];
+    NSRange range = [self.displayValue rangeOfString:YMACalculatorViewControllerDecimalSymbol];
     if (range.location == NSNotFound) {
-        self.displayValue = [self.displayValue stringByAppendingString:decimalSymbol];
+        self.displayValue = [self.displayValue stringByAppendingString:YMACalculatorViewControllerDecimalSymbol];
     }
 }
 
@@ -107,7 +108,7 @@ static int const defaultRadix = 10;
 
 
 - (IBAction)digitTaped:(UIButton *)sender {
-    [self.calculatorModel digitTaped:sender.currentTitle];
+    [self.calculatorModel handleDigit:sender.currentTitle];
 }
 
 
@@ -117,12 +118,12 @@ static int const defaultRadix = 10;
 
 
 - (IBAction)operationTaped:(UIButton *)sender {
-    [self.calculatorModel operationTaped: sender.currentTitle];
+    [self.calculatorModel handleOperation: sender.currentTitle];
 }
 
 
 - (IBAction)equalsTaped:(id)sender {
-    [self.calculatorModel equalsTaped];
+    [self.calculatorModel equals];
 }
 
 #pragma mark ViewControl Managment
@@ -155,19 +156,19 @@ static int const defaultRadix = 10;
     //redrow interface for current orientaion
     [self updateInterfaceWhenOrientationChanged];
     //reset radix to decemial
-    [self updateRadixAdndInterface: defaultRadix];
+    [self updateRadixAdndInterface: YMACalculatorViewControllerDefaultRadix];
 }
 
 - (void)updateInterfaceWhenOrientationChanged {
         UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
         BOOL radixDisableFlag;
         int indexStackView;
-        if (interfaceOrientation == interfaceOrientationPortrait){
+        if (interfaceOrientation == YMACalculatorViewControllerInterfaceOrientationPortrait){
             radixDisableFlag = YES;
-            indexStackView = indexStackViewPortraitPosition;
+            indexStackView = YMACalculatorViewControllerIndexStackViewPortraitPosition;
         }
         else {
-            indexStackView = indexStackViewLandscapePosition;
+            indexStackView = YMACalculatorViewControllerIndexStackViewLandscapePosition;
             radixDisableFlag = NO;
         }
         for (UIButton *button in self.allRadixButton) {

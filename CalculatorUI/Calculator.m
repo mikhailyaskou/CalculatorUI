@@ -9,29 +9,29 @@
 #import "Calculator.h"
 #import "FormatterForCalculator.h"
 
-static NSString *const errorMessageNan = @"ОШИБКА";
-static NSString *const errorMessageInf = @"Не определено";
-static int const defaultRadix = 10;
-static int const maximumSignificantDigits = 7;
+static NSString *const YMACalculatorBrainErrorMessageNan = @"ОШИБКА";
+static NSString *const YMACalculatorBrainErrorMessageInf = @"Не определено";
+static int const YMACalculatorBrainDefaultRadix = 10;
+static int const YMACalculatorBrainMaximumSignificantDigits = 7;
 //operations
-static NSString *const zeroCharacher = @"0";
-static NSString * const plus = @"+";
-static NSString * const minus = @"-";
-static NSString * const multiply =@"*";
-static NSString * const divide =@"/";
-static NSString * const changeSymbol =@"+/-";
-static NSString * const precent =@"%";
-static NSString * const squarRoot =@"√";
-static NSString * const clear =@"AC";
+static NSString * const YMACalculatorBrainZeroCharacher = @"0";
+static NSString * const YMACalculatorBrainPlus = @"+";
+static NSString * const YMACalculatorBrainMinus = @"-";
+static NSString * const YMACalculatorBrainMultiply =@"*";
+static NSString * const YMACalculatorBrainDivide =@"/";
+static NSString * const YMACalculatorBrainChangeSymbol =@"+/-";
+static NSString * const YMACalculatorBrainPrecent =@"%";
+static NSString * const YMACalculatorBrainSquarRoot =@"√";
+static NSString * const YMACalculatorBrainClear =@"AC";
 //method names
-static NSString * const plusMethodNames = @"add";
-static NSString * const minusMethodNames = @"sub";
-static NSString * const multiplyMethodNames =@"mul";
-static NSString * const divideMethodNames =@"div";
-static NSString * const changeSymbolMethodNames =@"сhangeSymbol";
-static NSString * const precentMethodNames =@"getPrecent";
-static NSString * const squarRootMethodNames =@"getSquareRoot";
-static NSString * const clearMethodNames =@"clear";
+static NSString * const YMACalculatorBrainPlusMethodNames = @"add";
+static NSString * const YMACalculatorBrainMinusMethodNames = @"sub";
+static NSString * const YMACalculatorBrainMultiplyMethodNames =@"mul";
+static NSString * const YMACalculatorBrainDivideMethodNames =@"div";
+static NSString * const YMACalculatorBrainChangeSymbolMethodNames =@"сhangeSymbol";
+static NSString * const YMACalculatorBrainPrecentMethodNames =@"precent";
+static NSString * const YMACalculatorBrainSquarRootMethodNames =@"squareRoot";
+static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
 
 
 @interface Calculator ()
@@ -45,24 +45,26 @@ static NSString * const clearMethodNames =@"clear";
 @property (nonatomic, assign, getter=isDigitEnteringEnterupted) BOOL digitEnteringEnterupted;
 @property (nonatomic, assign) int radix;
 
+- (NSString*)toDecemial:(NSString *) displayLabel;
+- (NSString*)fromDecemial:(double) operand;
+
 @end
 
 @implementation Calculator
 
 - (id)init {
     if (self = [super init]) {
-        _mapOfOperations = @{plus       : plusMethodNames,
-                             minus      : minusMethodNames,
-                             multiply   : multiplyMethodNames,
-                             divide     : divideMethodNames,
-                             changeSymbol: changeSymbolMethodNames,
-                             precent    : precentMethodNames,
-                             squarRoot  : squarRootMethodNames,
-                             clear      : clearMethodNames};
-        [_mapOfOperations retain];
+        _mapOfOperations = [@{YMACalculatorBrainPlus      : YMACalculatorBrainPlusMethodNames,
+                             YMACalculatorBrainMinus      : YMACalculatorBrainMinusMethodNames,
+                             YMACalculatorBrainMultiply   : YMACalculatorBrainMultiplyMethodNames,
+                             YMACalculatorBrainDivide     : YMACalculatorBrainDivideMethodNames,
+                             YMACalculatorBrainChangeSymbol: YMACalculatorBrainChangeSymbolMethodNames,
+                             YMACalculatorBrainPrecent    : YMACalculatorBrainPrecentMethodNames,
+                             YMACalculatorBrainSquarRoot  : YMACalculatorBrainSquarRootMethodNames,
+                            YMACalculatorBrainClear       : YMACalculatorBrainClearMethodNames}retain];
         _firstOperand = NAN;
         _secondOperand = NAN;
-        _radix = defaultRadix;
+        _radix = YMACalculatorBrainDefaultRadix;
     }
     return self;
 }
@@ -83,10 +85,10 @@ static NSString * const clearMethodNames =@"clear";
             [_numberFormatter setLocale:locale];
             [locale release];
             _numberFormatter.usesSignificantDigits = YES;
-            _numberFormatter.maximumSignificantDigits = maximumSignificantDigits;
-            _numberFormatter.notANumberSymbol = errorMessageNan;
-            _numberFormatter.negativeInfinitySymbol=errorMessageInf;
-            _numberFormatter.positiveInfinitySymbol=errorMessageInf;
+            _numberFormatter.maximumSignificantDigits = YMACalculatorBrainMaximumSignificantDigits;
+            _numberFormatter.notANumberSymbol = YMACalculatorBrainErrorMessageNan;
+            _numberFormatter.negativeInfinitySymbol=YMACalculatorBrainErrorMessageInf;
+            _numberFormatter.positiveInfinitySymbol=YMACalculatorBrainErrorMessageInf;
         }
     }
     return _numberFormatter;
@@ -147,21 +149,21 @@ static NSString * const clearMethodNames =@"clear";
 }
 
 
-- (double)getDecemialDisplayValue {
+- (double)decemialDisplayValue {
     return  [self toDecemial:self.delegate.displayValue].doubleValue;
 }
 
 
 #pragma mark - Actions
 
-- (void)operationTaped:(NSString *)operation {
+- (void)handleOperation:(NSString *)operation {
     //operation button work as equals button (and use operator entered before) IF first operator entered and digit entering NOT interrupted
     if (!isnan(self.firstOperand) && !self.isDigitEnteringEnterupted && !self.isEquailsWasTaped){
-        [self equalsTaped];
+        [self equals];
     }
     else {
         //SET first operand IF first operand not entered or if its happens after equals taped and its new operations.
-        self.firstOperand = [self getDecemialDisplayValue];
+        self.firstOperand = [self decemialDisplayValue];
     }
     //take current operator.
     self.operator = operation;
@@ -172,21 +174,21 @@ static NSString * const clearMethodNames =@"clear";
 }
 
 
-- (void)equalsTaped {
+- (void)equals {
     //SET second operand - IF digit entering enterupted OR second operator is not entered;
     if (!self.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
-        self.secondOperand = [self getDecemialDisplayValue];;
+        self.secondOperand = [self decemialDisplayValue];;
     }
     //calculating operation
     [self executeOperation:self.operator];
     //result is first operand now;
-    self.firstOperand = [self getDecemialDisplayValue];;
+    self.firstOperand = [self decemialDisplayValue];;
 }
 
 
-- (void)digitTaped:(NSString *)digit {
+- (void)handleDigit:(NSString *)digit {
     //IF digit entering was interrupted or on display zero THAN start entering new display value
-    if (([self.delegate.displayValue isEqualToString: zeroCharacher]) || (self.isDigitEnteringEnterupted)) {
+    if (([self.delegate.displayValue isEqualToString: YMACalculatorBrainZeroCharacher]) || (self.isDigitEnteringEnterupted)) {
     //reset value for new input
         self.delegate.displayValue=@"";
         self.digitEnteringEnterupted = NO;
@@ -242,17 +244,17 @@ static NSString * const clearMethodNames =@"clear";
 }
 
 - (void)сhangeSymbol {
-    self.result = 0 - [self getDecemialDisplayValue];
+    self.result = 0 - [self decemialDisplayValue];
     //set that digit entering in not interrupted and user can continue entering digit after change symbol;
     self.digitEnteringEnterupted = NO;
 }
 
-- (void)getPrecent {
-    self.result = [self getDecemialDisplayValue] / 100;
+- (void)precent {
+    self.result = [self decemialDisplayValue] / 100;
 }
 
-- (void)getSquareRoot {
-    self.result = sqrt([self getDecemialDisplayValue]);
+- (void)squareRoot {
+    self.result = sqrt([self decemialDisplayValue]);
 }
 
 @end
