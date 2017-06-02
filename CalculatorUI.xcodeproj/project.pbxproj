@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		98148EAD1ECDCED400B1664B /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98148EAC1ECDCED400B1664B /* Calculator.m */; };
+		98148EAD1ECDCED400B1664B /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98148EAC1ECDCED400B1664B /* CalculatorModel.m */; };
 		986CE5461ECD9AE5002A4386 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CE5441ECD9AE5002A4386 /* AboutUsViewController.m */; };
 		986CE5471ECD9AE5002A4386 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986CE5451ECD9AE5002A4386 /* AboutUsViewController.xib */; };
 		986CE54C1ECD9D64002A4386 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CE54A1ECD9D64002A4386 /* LicenseViewController.m */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		98148EAB1ECDCED400B1664B /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
-		98148EAC1ECDCED400B1664B /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		98148EAB1ECDCED400B1664B /* CalculatorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorModel.h; sourceTree = "<group>"; };
+		98148EAC1ECDCED400B1664B /* CalculatorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
 		986CE5431ECD9AE5002A4386 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		986CE5441ECD9AE5002A4386 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		986CE5451ECD9AE5002A4386 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
@@ -55,8 +55,8 @@
 		98148EAA1ECDCB4F00B1664B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				98148EAB1ECDCED400B1664B /* Calculator.h */,
-				98148EAC1ECDCED400B1664B /* Calculator.m */,
+				98148EAB1ECDCED400B1664B /* CalculatorModel.h */,
+				98148EAC1ECDCED400B1664B /* CalculatorModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 			files = (
 				98BB18181EC4E6A200641973 /* CalculatorViewController.m in Sources */,
 				98BB18151EC4E6A200641973 /* AppDelegate.m in Sources */,
-				98148EAD1ECDCED400B1664B /* Calculator.m in Sources */,
+				98148EAD1ECDCED400B1664B /* CalculatorModel.m in Sources */,
 				986CE54C1ECD9D64002A4386 /* LicenseViewController.m in Sources */,
 				98BB18121EC4E6A200641973 /* main.m in Sources */,
 				986CE5461ECD9AE5002A4386 /* AboutUsViewController.m in Sources */,

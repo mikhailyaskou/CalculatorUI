@@ -18,7 +18,7 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
 
 @interface CalculatorViewController ()
 
-@property (retain, nonatomic) Calculator *calculatorModel;
+@property (retain, nonatomic) CalculatorModel *calculatorModel;
 @property (retain, nonatomic) IBOutlet UILabel *resultLabel;
 @property (retain, nonatomic) IBOutlet UIStackView *mainStackView;
 @property (retain, nonatomic) IBOutlet UIStackView *operationStackView;
@@ -67,7 +67,7 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     //connect model
-    self.calculatorModel = [[Calculator new] autorelease];
+    self.calculatorModel = [[CalculatorModel new] autorelease];
     //connect delegate
     self.calculatorModel.delegate = self;
     //adding gesture for delete last digit

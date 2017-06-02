@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mikhail Yaskou. All rights reserved.
 //
 
-#import "Calculator.h"
+#import "CalculatorModel.h"
 #import "FormatterForCalculator.h"
 
 static NSString *const YMACalculatorBrainErrorMessageNan = @"ОШИБКА";
@@ -34,7 +34,7 @@ static NSString * const YMACalculatorBrainSquarRootMethodNames =@"squareRoot";
 static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
 
 
-@interface Calculator ()
+@interface CalculatorModel ()
 
 @property (nonatomic, retain) NSDictionary *mapOfOperations;
 @property (nonatomic, assign) double result;
@@ -50,7 +50,7 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
 
 @end
 
-@implementation Calculator
+@implementation CalculatorModel
 
 - (id)init {
     if (self = [super init]) {
@@ -211,10 +211,10 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
         self.equailsWasTaped = YES;
         //operation method call
         [self performSelector:operationMethodName];
-        [self resultUpdated: [Calculator.numberFormatter stringFromNumber:[NSNumber numberWithDouble:self.result]]];
+        [self resultUpdated: [CalculatorModel.numberFormatter stringFromNumber:[NSNumber numberWithDouble:self.result]]];
         //if result is error value than clear calculator model, and set setDigitEnteringEnterupted to reset displayLabel;
         if (isnan(self.result) || self.result == INFINITY){
-            self.delegate.displayValue = [Calculator.numberFormatter stringFromNumber:[NSNumber numberWithDouble:self.result]];
+            self.delegate.displayValue = [CalculatorModel.numberFormatter stringFromNumber:[NSNumber numberWithDouble:self.result]];
             [self clear];
         }
     }

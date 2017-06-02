@@ -17,7 +17,7 @@
 @end
 
 
-@interface Calculator : NSObject
+@interface CalculatorModel : NSObject
 
 @property (nonatomic, assign) id <CalculatorDelegate> delegate;
 

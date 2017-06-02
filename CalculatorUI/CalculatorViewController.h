@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Calculator.h"
+#import "CalculatorModel.h"
 
 @protocol CalculatorDelegate;
 
