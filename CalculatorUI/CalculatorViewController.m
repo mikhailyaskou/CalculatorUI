@@ -26,15 +26,12 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *allRadixButton;
 @property (retain, nonatomic) IBOutletCollection(UIButton) NSArray *disabledButtonsInLandscapeMode;
 
-
 @end
-
 
 @implementation CalculatorViewController
 
 
 @synthesize displayValue = _displayValue;
-
 
 - (void)setDisplayValue:(NSString *)displayValue {
     
@@ -45,11 +42,9 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     self.resultLabel.text = displayValue;
 }
 
-
 - (NSString *)displayValue {
     return  self.resultLabel.text;
 }
-
 
 - (void)dealloc {
     [_resultLabel release];
@@ -62,7 +57,6 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     [_disabledButtonsInLandscapeMode release];
     [super dealloc];
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -80,11 +74,15 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     [self updateRadixAdndInterface: YMACalculatorViewControllerDefaultRadix];
 }
 
+#pragma mark actioans
+
+- (IBAction)clearTaped:(UIButton *)sender {
+    [self.calculatorModel executeOperation:sender.currentTitle];
+}
 
 - (IBAction)deleteLastDigitTaped:(id)sender {
     [self deleteLastDigit];
 }
-
 
 - (void)deleteLastDigit {
     //this method uses twice - when button pressed, and with swipe
@@ -98,29 +96,19 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     }
 }
 
-
-- (IBAction)clearTaped:(UIButton *)sender {
-    [self.calculatorModel executeOperation:sender.currentTitle];
-}
-
-
-#pragma mark Calculate operatins
-
+#pragma mark Calculate actioans
 
 - (IBAction)digitTaped:(UIButton *)sender {
     [self.calculatorModel handleDigit:sender.currentTitle];
 }
 
-
 - (IBAction)unaryOperationTaped:(UIButton *)sender {
     [self.calculatorModel executeOperation: sender.currentTitle];
 }
 
-
 - (IBAction)operationTaped:(UIButton *)sender {
     [self.calculatorModel handleOperation: sender.currentTitle];
 }
-
 
 - (IBAction)equalsTaped:(id)sender {
     [self.calculatorModel equals];
@@ -128,8 +116,11 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
 
 #pragma mark ViewControl Managment
 
+- (IBAction)aboutTaped:(id)sender {
+    [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
+}
+
 - (IBAction)radixTaped:(UIButton*)sender {
-    
     [self updateRadixAdndInterface:sender.currentTitle.intValue];
 }
 
@@ -147,10 +138,7 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     }
 }
 
-- (IBAction)aboutTaped:(id)sender {
-    [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
-}
-
+#pragma mark Orintation managment
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id< UIViewControllerTransitionCoordinator>)coordinator {
     //redrow interface for current orientaion
@@ -180,6 +168,5 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
         [self.mainStackView removeArrangedSubview:self.operationStackView];
         [self.mainStackView insertArrangedSubview:self.operationStackView atIndex:indexStackView];
 }
-
 
 @end

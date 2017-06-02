@@ -7,7 +7,6 @@
 //
 
 #import "CalculatorModel.h"
-#import "FormatterForCalculator.h"
 
 static NSString *const YMACalculatorBrainErrorMessageNan = @"ОШИБКА";
 static NSString *const YMACalculatorBrainErrorMessageInf = @"Не определено";
@@ -32,7 +31,6 @@ static NSString * const YMACalculatorBrainChangeSymbolMethodNames =@"сhangeSymb
 static NSString * const YMACalculatorBrainPrecentMethodNames =@"precent";
 static NSString * const YMACalculatorBrainSquarRootMethodNames =@"squareRoot";
 static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
-
 
 @interface CalculatorModel ()
 
@@ -75,7 +73,6 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
     [super dealloc];
 }
 
-
 + (NSNumberFormatter *)numberFormatter {
     static NSNumberFormatter *_numberFormatter = nil;
     @synchronized(self) {
@@ -107,8 +104,6 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
     }
 }
 
-
-
 -(NSString *)fromDecemial:(double)operand {
     
     NSString *returnValue = @"";
@@ -138,7 +133,6 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
     return returnValue;
 }
 
-
 - (void)updatingRadix:(int) radix{
     
     if (self.radix !=radix){
@@ -148,11 +142,9 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
     }
 }
 
-
 - (double)decemialDisplayValue {
     return  [self toDecemial:self.delegate.displayValue].doubleValue;
 }
-
 
 #pragma mark - Actions
 
@@ -173,7 +165,6 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
     self.equailsWasTaped = NO;
 }
 
-
 - (void)equals {
     //SET second operand - IF digit entering enterupted OR second operator is not entered;
     if (!self.isDigitEnteringEnterupted || isnan(self.secondOperand)) {
@@ -184,7 +175,6 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
     //result is first operand now;
     self.firstOperand = [self decemialDisplayValue];;
 }
-
 
 - (void)handleDigit:(NSString *)digit {
     //IF digit entering was interrupted or on display zero THAN start entering new display value

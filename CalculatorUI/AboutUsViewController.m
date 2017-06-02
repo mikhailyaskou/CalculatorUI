@@ -11,16 +11,12 @@
 
 @interface AboutUsViewController ()
 
-
 @end
 
 @implementation AboutUsViewController
 
-
 - (IBAction)showLicenseTaped:(id)sender {
-    
     [self presentViewController: [[LicenseViewController new]autorelease] animated:YES completion:nil];
 }
-
 
 @end

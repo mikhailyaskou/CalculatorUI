@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol  CalculatorDelegate;
-
 @protocol CalculatorDelegate <NSObject>
 
 @property (nonatomic, retain) NSString *displayValue;
