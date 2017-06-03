@@ -30,21 +30,7 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
 
 @implementation CalculatorViewController
 
-
 @synthesize displayValue = _displayValue;
-
-- (void)setDisplayValue:(NSString *)displayValue {
-    
-    if (_displayValue!=displayValue) {
-        [_displayValue release];
-        _displayValue = [displayValue retain];
-    }
-    self.resultLabel.text = displayValue;
-}
-
-- (NSString *)displayValue {
-    return  self.resultLabel.text;
-}
 
 - (void)dealloc {
     [_resultLabel release];
@@ -71,10 +57,10 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     //drow interface depending on the orientation;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
-    [self updateRadixAdndInterface: YMACalculatorViewControllerDefaultRadix];
+    [self updateRadixAndInterface: YMACalculatorViewControllerDefaultRadix];
 }
 
-#pragma mark actioans
+#pragma mark - Actioans
 
 - (IBAction)clearTaped:(UIButton *)sender {
     [self.calculatorModel executeOperation:sender.currentTitle];
@@ -96,7 +82,7 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     }
 }
 
-#pragma mark Calculate actioans
+#pragma mark - Calculate actioans
 
 - (IBAction)digitTaped:(UIButton *)sender {
     [self.calculatorModel handleDigit:sender.currentTitle];
@@ -114,59 +100,69 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     [self.calculatorModel equals];
 }
 
-#pragma mark ViewControl Managment
+#pragma mark - ViewControl Managment
 
 - (IBAction)aboutTaped:(id)sender {
     [self.navigationController pushViewController: [[AboutUsViewController new]autorelease] animated: YES];
 }
 
 - (IBAction)radixTaped:(UIButton*)sender {
-    [self updateRadixAdndInterface:sender.currentTitle.intValue];
+    [self updateRadixAndInterface:sender.currentTitle.intValue];
 }
 
-- (void)updateRadixAdndInterface:(int) radix {
+- (void)updateRadixAndInterface:(int) radix {
     //update value
     [self.calculatorModel updatingRadix: radix];
     //update interface
     for (UIButton *button in self.allDigits) {
-        if (button.tag >= radix){
-            button.enabled = NO;
-        }
-        else {
-            button.enabled = YES;
-        }
+        button.enabled = button.tag < radix ? YES : NO;
     }
 }
 
-#pragma mark Orintation managment
+#pragma mark - Orintation managment
 
 - (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id< UIViewControllerTransitionCoordinator>)coordinator {
     //redrow interface for current orientaion
     [self updateInterfaceWhenOrientationChanged];
     //reset radix to decemial
-    [self updateRadixAdndInterface: YMACalculatorViewControllerDefaultRadix];
+    [self updateRadixAndInterface: YMACalculatorViewControllerDefaultRadix];
 }
 
 - (void)updateInterfaceWhenOrientationChanged {
-        UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
-        BOOL radixDisableFlag;
-        int indexStackView;
-        if (interfaceOrientation == YMACalculatorViewControllerInterfaceOrientationPortrait){
-            radixDisableFlag = YES;
-            indexStackView = YMACalculatorViewControllerIndexStackViewPortraitPosition;
-        }
-        else {
-            indexStackView = YMACalculatorViewControllerIndexStackViewLandscapePosition;
-            radixDisableFlag = NO;
-        }
-        for (UIButton *button in self.allRadixButton) {
-            button.hidden = radixDisableFlag;
-        }
-        for (UIButton *button in self.disabledButtonsInLandscapeMode) {
-            button.enabled = radixDisableFlag;
-        }
-        [self.mainStackView removeArrangedSubview:self.operationStackView];
-        [self.mainStackView insertArrangedSubview:self.operationStackView atIndex:indexStackView];
+    UIDeviceOrientation interfaceOrientation = [[UIDevice currentDevice] orientation];
+    BOOL radixDisableFlag;
+    int indexStackView;
+    if (interfaceOrientation == YMACalculatorViewControllerInterfaceOrientationPortrait){
+        radixDisableFlag = YES;
+        indexStackView = YMACalculatorViewControllerIndexStackViewPortraitPosition;
+    }
+    else {
+        indexStackView = YMACalculatorViewControllerIndexStackViewLandscapePosition;
+        radixDisableFlag = NO;
+    }
+    for (UIButton *button in self.allRadixButton) {
+        button.hidden = radixDisableFlag;
+    }
+    for (UIButton *button in self.disabledButtonsInLandscapeMode) {
+        button.enabled = radixDisableFlag;
+    }
+    [self.mainStackView removeArrangedSubview:self.operationStackView];
+    [self.mainStackView insertArrangedSubview:self.operationStackView atIndex:indexStackView];
+}
+
+#pragma mark - CalculatorDelegate
+
+- (void)setDisplayValue:(NSString *)displayValue {
+    
+    if (_displayValue!=displayValue) {
+        [_displayValue release];
+        _displayValue = [displayValue retain];
+    }
+    self.resultLabel.text = displayValue;
+}
+
+- (NSString *)displayValue {
+    return  self.resultLabel.text;
 }
 
 @end

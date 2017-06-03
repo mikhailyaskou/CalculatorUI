@@ -105,7 +105,6 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
 }
 
 -(NSString *)fromDecemial:(double)operand {
-    
     NSString *returnValue = @"";
     switch (self.radix) {
         case 2:
