@@ -14,11 +14,8 @@
 
 @implementation LicenseViewController
 
-
 - (IBAction)hideLicenceTaped:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 @end
