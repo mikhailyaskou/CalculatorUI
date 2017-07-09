@@ -8,8 +8,8 @@
 
 #import "CalculatorModel.h"
 
-static NSString *const YMACalculatorBrainErrorMessageNan = @"ОШИБКА";
-static NSString *const YMACalculatorBrainErrorMessageInf = @"Не определено";
+static NSString * const YMACalculatorBrainErrorMessageNan = @"ОШИБКА";
+static NSString * const YMACalculatorBrainErrorMessageInf = @"Не определено";
 static int const YMACalculatorBrainDefaultRadix = 10;
 static int const YMACalculatorBrainMaximumSignificantDigits = 7;
 //operations
@@ -59,7 +59,7 @@ static NSString * const YMACalculatorBrainClearMethodNames =@"clear";
                              YMACalculatorBrainChangeSymbol: YMACalculatorBrainChangeSymbolMethodNames,
                              YMACalculatorBrainPrecent    : YMACalculatorBrainPrecentMethodNames,
                              YMACalculatorBrainSquarRoot  : YMACalculatorBrainSquarRootMethodNames,
-                            YMACalculatorBrainClear       : YMACalculatorBrainClearMethodNames}retain];
+                             YMACalculatorBrainClear      : YMACalculatorBrainClearMethodNames}retain];
         _firstOperand = NAN;
         _secondOperand = NAN;
         _radix = YMACalculatorBrainDefaultRadix;

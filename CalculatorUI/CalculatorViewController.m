@@ -9,8 +9,8 @@
 #import "CalculatorViewController.h"
 #import "AboutUsViewController.h"
 
-static NSString *const YMACalculatorViewControllerZeroCharacher = @"0";
-static NSString *const YMACalculatorViewControllerDecimalSymbol = @".";
+static NSString * const YMACalculatorViewControllerZeroCharacher = @"0";
+static NSString * const YMACalculatorViewControllerDecimalSymbol = @".";
 static int YMACalculatorViewControllerInterfaceOrientationPortrait = 1;
 static int YMACalculatorViewControllerIndexStackViewPortraitPosition = 3;
 static int YMACalculatorViewControllerIndexStackViewLandscapePosition = 0;
