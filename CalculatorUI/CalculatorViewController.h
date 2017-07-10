@@ -11,7 +11,7 @@
 
 @protocol CalculatorDelegate;
 
-@interface CalculatorViewController:UIViewController <CalculatorDelegate>
+@interface CalculatorViewController : UIViewController <CalculatorDelegate>
 
 @end
 
