@@ -16,12 +16,13 @@ static int YMACalculatorViewControllerInterfaceOrientationPortrait = 1;
 static int YMACalculatorViewControllerIndexStackViewPortraitPosition = 3;
 static int YMACalculatorViewControllerIndexStackViewLandscapePosition = 0;
 static int const YMACalculatorViewControllerDefaultRadix = 10;
+static NSString *const YMACalculatorBrainPlus = @"+";
+static NSString *const YMACalculatorBrainMinus = @"-";
 
 
-@interface CalculatorModel ( YMAAddingOperationsAdditions )
+@interface CalculatorModel ( YMAAddingOperationsExposingProperties )
 
 @property(nonatomic, strong) NSDictionary *mapOfBlocksOperations;
-@property(nonatomic, assign) double result;
 @property(nonatomic, assign) double firstOperand;
 @property(nonatomic, assign) double secondOperand;
 
@@ -58,13 +59,17 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
     [self updateRadixAndInterface:YMACalculatorViewControllerDefaultRadix];
+    //adding "new" operations
+    [self addNewOperations];
 }
 
 - (void)addNewOperations {
     __weak CalculatorModel *weakCalculatorModel = self.calculatorModel;
-    NSMutableDictionary *mutableDictionary = [self.calculatorModel.mapOfBlocksOperations mutableCopy];
-    mutableDictionary[@"+"] = [^{ weakCalculatorModel.result = weakCalculatorModel.firstOperand + weakCalculatorModel.secondOperand; } copy];
-    self.calculatorModel.mapOfBlocksOperations = [mutableDictionary copy];
+    NSMutableDictionary *mutableDictionaryForNewOperations = [self.calculatorModel.mapOfBlocksOperations mutableCopy];
+    // - and + operations just for example;
+    mutableDictionaryForNewOperations[YMACalculatorBrainPlus] = [^{ return weakCalculatorModel.firstOperand + weakCalculatorModel.secondOperand; } copy];
+    mutableDictionaryForNewOperations[YMACalculatorBrainMinus] = [^{ return weakCalculatorModel.firstOperand - weakCalculatorModel.secondOperand; } copy];
+    self.calculatorModel.mapOfBlocksOperations = [mutableDictionaryForNewOperations copy];
 }
 
 #pragma mark - Actioans
