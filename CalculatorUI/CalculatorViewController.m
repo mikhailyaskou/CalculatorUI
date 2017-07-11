@@ -8,6 +8,7 @@
 
 #import "CalculatorViewController.h"
 #import "AboutUsViewController.h"
+#import "CalculatorModel.h"
 
 static NSString *const YMACalculatorViewControllerZeroCharacter = @"0";
 static NSString *const YMACalculatorViewControllerDecimalSymbol = @".";
@@ -15,6 +16,16 @@ static int YMACalculatorViewControllerInterfaceOrientationPortrait = 1;
 static int YMACalculatorViewControllerIndexStackViewPortraitPosition = 3;
 static int YMACalculatorViewControllerIndexStackViewLandscapePosition = 0;
 static int const YMACalculatorViewControllerDefaultRadix = 10;
+
+
+@interface CalculatorModel ( YMAAddingOperationsAdditions )
+
+@property(nonatomic, strong) NSDictionary *mapOfBlocksOperations;
+@property(nonatomic, assign) double result;
+@property(nonatomic, assign) double firstOperand;
+@property(nonatomic, assign) double secondOperand;
+
+@end
 
 @interface CalculatorViewController ()
 
@@ -47,6 +58,13 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
     [self updateRadixAndInterface:YMACalculatorViewControllerDefaultRadix];
+}
+
+- (void)addNewOperations {
+    __weak CalculatorModel *weakCalculatorModel = self.calculatorModel;
+    NSMutableDictionary *mutableDictionary = [self.calculatorModel.mapOfBlocksOperations mutableCopy];
+    mutableDictionary[@"+"] = [^{ weakCalculatorModel.result = weakCalculatorModel.firstOperand + weakCalculatorModel.secondOperand; } copy];
+    self.calculatorModel.mapOfBlocksOperations = [mutableDictionary copy];
 }
 
 #pragma mark - Actioans
