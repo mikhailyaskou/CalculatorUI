@@ -10,20 +10,19 @@
 
 @protocol CalculatorDelegate <NSObject>
 
-@property (nonatomic, retain) NSString *displayValue;
+@property(nonatomic, retain) NSString *displayValue;
 
 @end
 
-
 @interface CalculatorModel : NSObject
 
-@property (nonatomic, assign) id <CalculatorDelegate> delegate;
+@property(nonatomic, weak) id <CalculatorDelegate> delegate;
 
 - (void)equals;
-- (void)executeOperation:(NSString *) operation;
+- (void)executeOperation:(NSString *)operation;
 - (void)handleOperation:(NSString *)operation;
 - (void)handleDigit:(NSString *)digit;
-- (void)updatingRadix:(int) radix;
+- (void)updatingRadix:(int)radix;
 
 
 @end

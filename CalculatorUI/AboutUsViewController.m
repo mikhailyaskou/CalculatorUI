@@ -16,7 +16,7 @@
 @implementation AboutUsViewController
 
 - (IBAction)showLicenseTaped:(id)sender {
-    [self presentViewController: [[LicenseViewController new]autorelease] animated:YES completion:nil];
+    [self presentViewController:[LicenseViewController new] animated:YES completion:nil];
 }
 
 @end
