@@ -24,5 +24,4 @@
 - (void)handleDigit:(NSString *)digit;
 - (void)updatingRadix:(int)radix;
 
-
 @end

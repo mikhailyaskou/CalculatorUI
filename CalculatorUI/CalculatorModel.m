@@ -34,7 +34,8 @@ static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 
 @interface CalculatorModel ()
 
-@property(nonatomic, strong) NSDictionary *mapOfOperations;
+@property(nonatomic, strong) NSDictionary *mapOfBlocksOperations;
+
 @property(nonatomic, assign) double result;
 @property(nonatomic, assign) double firstOperand;
 @property(nonatomic, assign) double secondOperand;
@@ -45,6 +46,7 @@ static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 
 - (NSString *)toDecimal:(NSString *)displayLabel;
 - (NSString *)fromDecimal:(double)operand;
+- (double)decimalDisplayValue;
 
 @end
 
@@ -52,14 +54,23 @@ static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 
 - (id)init {
     if (self = [super init]) {
-        _mapOfOperations = @{YMACalculatorBrainPlus: YMACalculatorBrainPlusMethodNames,
-            YMACalculatorBrainMinus: YMACalculatorBrainMinusMethodNames,
-            YMACalculatorBrainMultiply: YMACalculatorBrainMultiplyMethodNames,
-            YMACalculatorBrainDivide: YMACalculatorBrainDivideMethodNames,
-            YMACalculatorBrainChangeSymbol: YMACalculatorBrainChangeSymbolMethodNames,
-            YMACalculatorBrainPrecent: YMACalculatorBrainPrecentMethodNames,
-            YMACalculatorBrainSquareRoot: YMACalculatorBrainSquareRootMethodNames,
-            YMACalculatorBrainClear: YMACalculatorBrainClearMethodNames};
+        __weak CalculatorModel *weakSelf = self;
+        _mapOfBlocksOperations = @{
+            YMACalculatorBrainPlus: [^{ return weakSelf.firstOperand + weakSelf.secondOperand; } copy],
+            YMACalculatorBrainMinus: [^{ return weakSelf.firstOperand - weakSelf.secondOperand; } copy],
+            YMACalculatorBrainMultiply: [^{ return weakSelf.firstOperand * weakSelf.secondOperand; } copy],
+            YMACalculatorBrainDivide: [^{ return weakSelf.firstOperand / weakSelf.secondOperand; } copy],
+            YMACalculatorBrainPrecent: [^{ return weakSelf.decimalDisplayValue / 100; } copy],
+            YMACalculatorBrainSquareRoot: [^{ return sqrt(weakSelf.decimalDisplayValue); } copy],
+            YMACalculatorBrainChangeSymbol: [^{//set that digit entering in not interrupted and user can continue entering digit after change symbol;
+                                            weakSelf.digitEnteringInterrupted = NO;
+                                            return 0 - weakSelf.decimalDisplayValue;} copy],
+            YMACalculatorBrainClear: [^{weakSelf.firstOperand = NAN;
+                                        weakSelf.secondOperand = NAN;
+                                        weakSelf.operator = nil;
+                                        return 0.0; } copy],
+        };
+
         _firstOperand = NAN;
         _secondOperand = NAN;
         _radix = YMACalculatorBrainDefaultRadix;
@@ -180,58 +191,19 @@ static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 #pragma mark - Operations
 
 - (void)executeOperation:(NSString *)operation {
-    SEL operationMethodName = NSSelectorFromString([self.mapOfOperations valueForKey:operation]);
-    if ([self respondsToSelector:operationMethodName]) {
-        //marking that the input of the digits was interrupted
-        self.digitEnteringInterrupted = YES;
-        self.equailsWasTaped = YES;
-        //operation method call
-        [self performSelector:operationMethodName];
-        [self resultUpdated:[CalculatorModel.numberFormatter stringFromNumber:@(self.result)]];
-        //if result is error value than clear calculator model, and set setDigitEnteringInterrupted to reset displayLabel;
-        if (isnan(self.result) || self.result == INFINITY) {
-            self.delegate.displayValue =
-                [CalculatorModel.numberFormatter stringFromNumber:@(self.result)];
-            [self clear];
-        }
+    //marking that the input of the digits was interrupted
+    self.digitEnteringInterrupted = YES;
+    self.equailsWasTaped = YES;
+    //operation block call
+    double (^operationBlock)() = self.mapOfBlocksOperations[operation];
+    self.result = operationBlock();
+    [self resultUpdated:[CalculatorModel.numberFormatter stringFromNumber:@(self.result)]];
+    //if result is error value than clear calculator model, and set setDigitEnteringInterrupted to reset displayLabel;
+    if (isnan(self.result) || self.result == INFINITY) {
+        self.delegate.displayValue = [CalculatorModel.numberFormatter stringFromNumber:@(self.result)];
+        void(^clearBlock)() = self.mapOfBlocksOperations[YMACalculatorBrainClear];
+        clearBlock();
     }
-}
-
-- (void)clear {
-    self.firstOperand = NAN;
-    self.secondOperand = NAN;
-    self.operator = nil;
-    self.result = 0;
-}
-
-- (void)add {
-    self.result = self.firstOperand + self.secondOperand;
-}
-
-- (void)sub {
-    self.result = self.firstOperand - self.secondOperand;
-}
-
-- (void)mul {
-    self.result = self.firstOperand * self.secondOperand;
-}
-
-- (void)div {
-    self.result = self.firstOperand / self.secondOperand;
-}
-
-- (void)сhangeSymbol {
-    self.result = 0 - [self decimalDisplayValue];
-    //set that digit entering in not interrupted and user can continue entering digit after change symbol;
-    self.digitEnteringInterrupted = NO;
-}
-
-- (void)precent {
-    self.result = [self decimalDisplayValue] / 100;
-}
-
-- (void)squareRoot {
-    self.result = sqrt([self decimalDisplayValue]);
 }
 
 @end
