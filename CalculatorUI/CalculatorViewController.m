@@ -8,6 +8,7 @@
 
 #import "CalculatorViewController.h"
 #import "AboutUsViewController.h"
+#import "CalculatorModel.h"
 
 static NSString *const YMACalculatorViewControllerZeroCharacter = @"0";
 static NSString *const YMACalculatorViewControllerDecimalSymbol = @".";
@@ -15,6 +16,17 @@ static int YMACalculatorViewControllerInterfaceOrientationPortrait = 1;
 static int YMACalculatorViewControllerIndexStackViewPortraitPosition = 3;
 static int YMACalculatorViewControllerIndexStackViewLandscapePosition = 0;
 static int const YMACalculatorViewControllerDefaultRadix = 10;
+static NSString *const YMACalculatorBrainPlus = @"+";
+static NSString *const YMACalculatorBrainMinus = @"-";
+
+
+@interface CalculatorModel ( YMAAddingOperationsExposingProperties )
+
+@property(nonatomic, strong) NSDictionary *mapOfBlocksOperations;
+@property(nonatomic, assign) double firstOperand;
+@property(nonatomic, assign) double secondOperand;
+
+@end
 
 @interface CalculatorViewController ()
 
@@ -47,6 +59,17 @@ static int const YMACalculatorViewControllerDefaultRadix = 10;
     [self updateInterfaceWhenOrientationChanged];
     //set radix to default;
     [self updateRadixAndInterface:YMACalculatorViewControllerDefaultRadix];
+    //adding "new" operations
+    [self addNewOperations];
+}
+
+- (void)addNewOperations {
+    __weak CalculatorModel *weakCalculatorModel = self.calculatorModel;
+    NSMutableDictionary *mutableDictionaryForNewOperations = [self.calculatorModel.mapOfBlocksOperations mutableCopy];
+    // - and + operations just for example;
+    mutableDictionaryForNewOperations[YMACalculatorBrainPlus] = [^{ return weakCalculatorModel.firstOperand + weakCalculatorModel.secondOperand; } copy];
+    mutableDictionaryForNewOperations[YMACalculatorBrainMinus] = [^{ return weakCalculatorModel.firstOperand - weakCalculatorModel.secondOperand; } copy];
+    self.calculatorModel.mapOfBlocksOperations = [mutableDictionaryForNewOperations copy];
 }
 
 #pragma mark - Actioans
