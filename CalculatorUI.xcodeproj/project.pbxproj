@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		98148EAD1ECDCED400B1664B /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 98148EAC1ECDCED400B1664B /* CalculatorModel.m */; };
 		9840305D1F1C9CFE0039862B /* YMANumeralSystemsCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9840305C1F1C9CFE0039862B /* YMANumeralSystemsCalculator.m */; };
+		984030611F1CAC540039862B /* YMAEngineeringCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 984030601F1CAC540039862B /* YMAEngineeringCalculator.m */; };
 		986CE5461ECD9AE5002A4386 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CE5441ECD9AE5002A4386 /* AboutUsViewController.m */; };
 		986CE5471ECD9AE5002A4386 /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 986CE5451ECD9AE5002A4386 /* AboutUsViewController.xib */; };
 		986CE54C1ECD9D64002A4386 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 986CE54A1ECD9D64002A4386 /* LicenseViewController.m */; };
@@ -27,6 +28,8 @@
 		98148EAC1ECDCED400B1664B /* CalculatorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
 		9840305B1F1C9CFE0039862B /* YMANumeralSystemsCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMANumeralSystemsCalculator.h; sourceTree = "<group>"; };
 		9840305C1F1C9CFE0039862B /* YMANumeralSystemsCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMANumeralSystemsCalculator.m; sourceTree = "<group>"; };
+		9840305F1F1CAC540039862B /* YMAEngineeringCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAEngineeringCalculator.h; sourceTree = "<group>"; };
+		984030601F1CAC540039862B /* YMAEngineeringCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMAEngineeringCalculator.m; sourceTree = "<group>"; };
 		986CE5431ECD9AE5002A4386 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		986CE5441ECD9AE5002A4386 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		986CE5451ECD9AE5002A4386 /* AboutUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
@@ -76,6 +79,15 @@
 			name = YMANumeralSystemsCalculator;
 			sourceTree = "<group>";
 		};
+		984030621F1CAC580039862B /* YMAEngineeringCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				9840305F1F1CAC540039862B /* YMAEngineeringCalculator.h */,
+				984030601F1CAC540039862B /* YMAEngineeringCalculator.m */,
+			);
+			name = YMAEngineeringCalculator;
+			sourceTree = "<group>";
+		};
 		986CE5481ECD9CF6002A4386 /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +122,7 @@
 			children = (
 				98148EAA1ECDCB4F00B1664B /* Model */,
 				98BB18131EC4E6A200641973 /* AppDelegate.h */,
+				984030621F1CAC580039862B /* YMAEngineeringCalculator */,
 				9840305E1F1C9D040039862B /* YMANumeralSystemsCalculator */,
 				98BDB7681F1B7794007BC04B /* YMASimpleCalculator */,
 				98BB18161EC4E6A200641973 /* CalculatorViewController.h */,
@@ -221,6 +234,7 @@
 				98148EAD1ECDCED400B1664B /* CalculatorModel.m in Sources */,
 				98BDB7671F1B778F007BC04B /* YMASimpleCalculator.m in Sources */,
 				986CE54C1ECD9D64002A4386 /* LicenseViewController.m in Sources */,
+				984030611F1CAC540039862B /* YMAEngineeringCalculator.m in Sources */,
 				9840305D1F1C9CFE0039862B /* YMANumeralSystemsCalculator.m in Sources */,
 				98BB18121EC4E6A200641973 /* main.m in Sources */,
 				986CE5461ECD9AE5002A4386 /* AboutUsViewController.m in Sources */,

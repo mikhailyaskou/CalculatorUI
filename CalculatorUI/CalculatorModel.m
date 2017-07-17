@@ -22,15 +22,6 @@ static NSString *const YMACalculatorBrainChangeSymbol = @"+/-";
 static NSString *const YMACalculatorBrainPrecent = @"%";
 static NSString *const YMACalculatorBrainSquareRoot = @"√";
 static NSString *const YMACalculatorBrainClear = @"AC";
-//method names
-static NSString *const YMACalculatorBrainPlusMethodNames = @"add";
-static NSString *const YMACalculatorBrainMinusMethodNames = @"sub";
-static NSString *const YMACalculatorBrainMultiplyMethodNames = @"mul";
-static NSString *const YMACalculatorBrainDivideMethodNames = @"div";
-static NSString *const YMACalculatorBrainChangeSymbolMethodNames = @"сhangeSymbol";
-static NSString *const YMACalculatorBrainPrecentMethodNames = @"precent";
-static NSString *const YMACalculatorBrainSquareRootMethodNames = @"squareRoot";
-static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 
 @interface CalculatorModel ()
 
@@ -191,18 +182,21 @@ static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 #pragma mark - Operations
 
 - (void)executeOperation:(NSString *)operation {
-    //marking that the input of the digits was interrupted
-    self.digitEnteringInterrupted = YES;
-    self.equailsWasTaped = YES;
-    //operation block call
-    double (^operationBlock)() = self.mapOfBlocksOperations[operation];
-    self.result = operationBlock();
-    [self resultUpdated:[CalculatorModel.numberFormatter stringFromNumber:@(self.result)]];
-    //if result is error value than clear calculator model, and set setDigitEnteringInterrupted to reset displayLabel;
-    if (isnan(self.result) || self.result == INFINITY) {
-        self.delegate.displayValue = [CalculatorModel.numberFormatter stringFromNumber:@(self.result)];
-        void(^clearBlock)() = self.mapOfBlocksOperations[YMACalculatorBrainClear];
-        clearBlock();
+    //check is that operation exist
+    if (self.mapOfBlocksOperations[operation]) {
+        //marking that the input of the digits was interrupted
+        self.digitEnteringInterrupted = YES;
+        self.equailsWasTaped = YES;
+        //operation block call
+        double (^operationBlock)() = self.mapOfBlocksOperations[operation];
+        self.result = operationBlock();
+        [self resultUpdated:[CalculatorModel.numberFormatter stringFromNumber:@(self.result)]];
+        //if result is error value than clear calculator model, and set setDigitEnteringInterrupted to reset displayLabel;
+        if (isnan(self.result) || self.result == INFINITY) {
+            self.delegate.displayValue = [CalculatorModel.numberFormatter stringFromNumber:@(self.result)];
+            void(^clearBlock)() = self.mapOfBlocksOperations[YMACalculatorBrainClear];
+            clearBlock();
+        }
     }
 }
 
