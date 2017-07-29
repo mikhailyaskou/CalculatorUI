@@ -8,7 +8,6 @@
 
 #import "CalculatorViewController.h"
 #import "AboutUsViewController.h"
-#import "CalculatorModel.h"
 
 static NSString *const YMACalculatorViewControllerZeroCharacter = @"0";
 static NSString *const YMACalculatorViewControllerDecimalSymbol = @".";

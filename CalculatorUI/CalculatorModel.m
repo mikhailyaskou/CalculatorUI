@@ -55,10 +55,9 @@ static NSString *const YMACalculatorBrainClearMethodNames = @"clear";
 - (id)init {
     if (self = [super init]) {
         __weak CalculatorModel *weakSelf = self;
-        _mapOfBlocksOperations = @{
-            //comented for adding + and - blocks in ViewController.
-          //  YMACalculatorBrainPlus: [^{ return weakSelf.firstOperand + weakSelf.secondOperand; } copy],
-          //  YMACalculatorBrainMinus: [^{ return weakSelf.firstOperand - weakSelf.secondOperand; } copy],
+        _mapOfBlocksOperations = @{            
+            YMACalculatorBrainPlus: [^{ return weakSelf.firstOperand + weakSelf.secondOperand; } copy],
+            YMACalculatorBrainMinus: [^{ return weakSelf.firstOperand - weakSelf.secondOperand; } copy],
             YMACalculatorBrainMultiply: [^{ return weakSelf.firstOperand * weakSelf.secondOperand; } copy],
             YMACalculatorBrainDivide: [^{ return weakSelf.firstOperand / weakSelf.secondOperand; } copy],
             YMACalculatorBrainPrecent: [^{ return weakSelf.decimalDisplayValue / 100; } copy],

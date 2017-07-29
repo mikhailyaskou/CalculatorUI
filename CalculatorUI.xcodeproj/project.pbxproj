@@ -18,6 +18,7 @@
 		98BB181B1EC4E6A200641973 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98BB18191EC4E6A200641973 /* Main.storyboard */; };
 		98BB181D1EC4E6A200641973 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98BB181C1EC4E6A200641973 /* Assets.xcassets */; };
 		98BB18201EC4E6A200641973 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98BB181E1EC4E6A200641973 /* LaunchScreen.storyboard */; };
+		98BDB7671F1B778F007BC04B /* YMASimpleCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BDB7661F1B778F007BC04B /* YMASimpleCalculator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		98BB181C1EC4E6A200641973 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98BB181F1EC4E6A200641973 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98BB18211EC4E6A300641973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98BDB7651F1B778F007BC04B /* YMASimpleCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMASimpleCalculator.h; sourceTree = "<group>"; };
+		98BDB7661F1B778F007BC04B /* YMASimpleCalculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMASimpleCalculator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,7 @@
 			children = (
 				98148EAA1ECDCB4F00B1664B /* Model */,
 				98BB18131EC4E6A200641973 /* AppDelegate.h */,
+				98BDB7681F1B7794007BC04B /* YMASimpleCalculator */,
 				98BB18161EC4E6A200641973 /* CalculatorViewController.h */,
 				98BB18171EC4E6A200641973 /* CalculatorViewController.m */,
 				98BB18141EC4E6A200641973 /* AppDelegate.m */,
@@ -114,6 +118,15 @@
 				98BB18111EC4E6A200641973 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98BDB7681F1B7794007BC04B /* YMASimpleCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				98BDB7651F1B778F007BC04B /* YMASimpleCalculator.h */,
+				98BDB7661F1B778F007BC04B /* YMASimpleCalculator.m */,
+			);
+			name = YMASimpleCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +206,7 @@
 				98BB18181EC4E6A200641973 /* CalculatorViewController.m in Sources */,
 				98BB18151EC4E6A200641973 /* AppDelegate.m in Sources */,
 				98148EAD1ECDCED400B1664B /* CalculatorModel.m in Sources */,
+				98BDB7671F1B778F007BC04B /* YMASimpleCalculator.m in Sources */,
 				986CE54C1ECD9D64002A4386 /* LicenseViewController.m in Sources */,
 				98BB18121EC4E6A200641973 /* main.m in Sources */,
 				986CE5461ECD9AE5002A4386 /* AboutUsViewController.m in Sources */,
